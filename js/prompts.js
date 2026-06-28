@@ -12,7 +12,10 @@ We'll work through three analytical lenses, one at a time. Each lens asks you to
     personal: {
       name: "Personal",
       intro: `**Lens 1: Personal**
-Why is this passage important to *you* personally? Think about how Macbeth's words connect to your own experiences, feelings, or observations about human nature.`,
+
+This lens asks you to connect the passage to your own life, experiences, or emotions. What does this make you think or feel, and why?
+
+There are no wrong answers here — what matters is that you engage honestly with the text and reflect on why it resonates (or doesn't) with your own experience.`,
       questions: [
         "What emotions did you feel while reading this passage? Why do you think it provoked that response?",
         "Can you think of a moment in your own life — or someone you know — where similar feelings or pressures were at play?",
@@ -23,7 +26,10 @@ Why is this passage important to *you* personally? Think about how Macbeth's wor
     discursive: {
       name: "Discursive",
       intro: `**Lens 2: Discursive**
-Why does this passage matter to the study of literature? Think about Shakespeare's craft — his use of language, imagery, structure — and how this soliloquy fits into broader literary traditions or conversations.`,
+
+This lens asks why this passage matters to the study of literature. Think about Shakespeare's craft, the themes he's exploring, or why scholars and students still read this play today.
+
+Focus on *how* the writing works — the language, the structure, the literary techniques — not just *what* it says.`,
       questions: [
         "What literary devices (metaphor, imagery, repetition, etc.) do you notice in this passage? Pick one and explain how it contributes to meaning.",
         "How does this soliloquy reveal something about Macbeth's character development at this point in the play?",
@@ -34,7 +40,10 @@ Why does this passage matter to the study of literature? Think about Shakespeare
     global: {
       name: "Global",
       intro: `**Lens 3: Global**
-Why does this passage matter to the *world*? Think beyond the play itself — what does it say about politics, society, ethics, or the human condition that resonates across time and cultures?`,
+
+This lens asks why this passage matters beyond the classroom — to people of different backgrounds, cultures, or time periods. What universal human experience does it speak to?
+
+Think big: politics, ethics, social issues, the human condition. How do Macbeth's words connect to the world outside the play?`,
       questions: [
         "What universal human experience or moral question does this passage address?",
         "Can you connect the ideas in this passage to a real-world event, social issue, or political situation — past or present?",
@@ -44,17 +53,24 @@ Why does this passage matter to the *world*? Think beyond the play itself — wh
     }
   },
 
+  evidenceTip: `**A Quick Tip on Using Textual Evidence**
+
+You can support your points with evidence in two ways:
+
+- **Direct quote**: Use the exact words from the soliloquy in quotation marks, and note the act and scene. For example: In Act 5, Scene 5, Macbeth calls life "a tale / Told by an idiot, full of sound and fury, / Signifying nothing."
+- **Paraphrase**: Restate the idea from the passage in your own words. For example: Macbeth suggests that life is ultimately meaningless, comparing it to a story told by a fool.
+
+Either way, always do three things: *introduce* the evidence (tell the reader what to look for), *present* it (quote or paraphrase), and *explain* how it connects to your point. This is called an **evidence sandwich**.`,
+
   writingIntro: `**Time to Write**
 
 Now you'll compose three paragraphs — one for each lens (Personal, Discursive, Global). Each paragraph should:
 
 - Make a clear claim about the soliloquy's significance through that lens
-- Include at least one piece of **textual evidence** using an **evidence sandwich**:
-  1. **Introduce** the quote (who says it, when, why it matters)
-  2. **Provide** the quote itself
-  3. **Explain** how the quote supports your claim
+- Include at least one piece of textual evidence using the evidence sandwich described above
+- Explain how the evidence supports your claim
 
-Take your time. When you're ready, paste all three paragraphs below.`,
+You already have your blueprints from earlier — use them as a guide. Take your time, and when you're ready, paste all three paragraphs below. Separate each paragraph with a blank line.`,
 
   writingReminder: `Remember: each paragraph needs a clear claim, at least one quote from the soliloquy, and an explanation of how that evidence supports your point. You can scroll up to review the soliloquy text and your earlier responses for ideas.`,
 

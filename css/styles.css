@@ -113,6 +113,11 @@ header p {
   border-left: 3px solid #4a9eff;
 }
 
+.evidence-tip {
+  background: #1a2a3e;
+  border-left: 3px solid #f0a030;
+}
+
 .evaluation {
   background: #0a1628;
   border: 1px solid var(--border);

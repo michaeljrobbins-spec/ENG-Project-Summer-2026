@@ -117,6 +117,7 @@ class Chatbot {
         responses.push({ text: PROMPTS.lenses[nextLens].questions[0], type: "bot", className: "question" });
       } else {
         this.phase = PHASES.WRITING;
+        responses.push({ text: PROMPTS.evidenceTip, type: "bot", className: "evidence-tip" });
         responses.push({ text: PROMPTS.writingIntro, type: "bot" });
       }
     }
