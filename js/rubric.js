@@ -57,10 +57,10 @@ function evaluateWriting(paragraphs, soliloquyText) {
 
   const evidenceSatisfactory = evidenceCount >= 3;
   results.push({
-    id: “evidence”,
-    score: evidenceSatisfactory ? “Satisfactory” : “Needs Revision”,
+    id: "evidence",
+    score: evidenceSatisfactory ? "Satisfactory" : "Needs Revision",
     feedback: evidenceSatisfactory
-      ? “Each paragraph integrates textual evidence — whether quoted or paraphrased — introduced and explained in connection to the claim.”
+      ? "Each paragraph integrates textual evidence — whether quoted or paraphrased — introduced and explained in connection to the claim."
       : buildEvidenceFeedback(paragraphEvidenceResults)
   });
 
@@ -79,7 +79,7 @@ function evaluateWriting(paragraphs, soliloquyText) {
 
 function extractDirectQuotes(paragraph) {
   const quotes = [];
-  const regex = /[“”””]([^””””]{8,}?)[“”””]/g;
+  const regex = /["\u201c\u201d]([^"\u201c\u201d]{8,}?)["\u201c\u201d]/g;
   let match;
   while ((match = regex.exec(paragraph)) !== null) {
     quotes.push(match[1]);
@@ -90,7 +90,7 @@ function extractDirectQuotes(paragraph) {
 function isFromSoliloquy(quote, soliloquyLines) {
   const q = quote.toLowerCase().trim();
   if (q.length < 8) return false;
-  const words = q.split(/\s+/).slice(0, 6).join(“ “);
+  const words = q.split(/\s+/).slice(0, 6).join(" ");
   return soliloquyLines.some(line => line.includes(words) || words.includes(line));
 }
 
@@ -111,16 +111,16 @@ function detectsParaphrase(paragraph, soliloquyLines, soliloquyFullLower) {
   }
 
   const referenceSignals = [
-    “macbeth describes”, “macbeth compares”, “macbeth refers”,
-    “macbeth suggests”, “macbeth laments”, “macbeth acknowledges”,
-    “macbeth recognizes”, “macbeth imagines”, “macbeth questions”,
-    “macbeth expresses”, “macbeth contemplates”, “macbeth realizes”,
-    “shakespeare describes”, “shakespeare compares”, “shakespeare uses”,
-    “shakespeare portrays”, “shakespeare suggests”,
-    “the soliloquy”, “the passage”, “the speech”,
-    “in this moment”, “in the text”, “in these lines”,
-    “he describes”, “he compares”, “he refers to”,
-    “he suggests”, “he laments”, “he envisions”
+    "macbeth describes", "macbeth compares", "macbeth refers",
+    "macbeth suggests", "macbeth laments", "macbeth acknowledges",
+    "macbeth recognizes", "macbeth imagines", "macbeth questions",
+    "macbeth expresses", "macbeth contemplates", "macbeth realizes",
+    "shakespeare describes", "shakespeare compares", "shakespeare uses",
+    "shakespeare portrays", "shakespeare suggests",
+    "the soliloquy", "the passage", "the speech",
+    "in this moment", "in the text", "in these lines",
+    "he describes", "he compares", "he refers to",
+    "he suggests", "he laments", "he envisions"
   ];
   if (referenceSignals.some(s => p.includes(s))) {
     const soliloquyWords = soliloquyFullLower.split(/\s+/).filter(w => w.length >= 5);
@@ -135,16 +135,16 @@ function detectsParaphrase(paragraph, soliloquyLines, soliloquyFullLower) {
 function hasIntroduction(paragraph, directQuotes, hasParaphrase) {
   const lower = paragraph.toLowerCase();
   const introSignals = [
-    “macbeth”, “he says”, “he states”, “shakespeare”, “writes”,
-    “declares”, “proclaims”, “reflects”, “reveals”, “when macbeth”,
-    “in the”, “at this point”, “here,”, “the line”, “passage”,
-    “describes”, “compares”, “suggests”, “laments”, “acknowledges”,
-    “expresses”, “contemplates”, “soliloquy”, “in this moment”,
-    “in these lines”, “the speech”, “the text”
+    "macbeth", "he says", "he states", "shakespeare", "writes",
+    "declares", "proclaims", "reflects", "reveals", "when macbeth",
+    "in the", "at this point", "here,", "the line", "passage",
+    "describes", "compares", "suggests", "laments", "acknowledges",
+    "expresses", "contemplates", "soliloquy", "in this moment",
+    "in these lines", "the speech", "the text"
   ];
 
   if (directQuotes.length > 0) {
-    const firstQuoteChar = paragraph.search(/[“”””]/);
+    const firstQuoteChar = paragraph.search(/["\u201c\u201d]/);
     const textBefore = lower.substring(0, Math.max(0, firstQuoteChar));
     return introSignals.some(s => textBefore.includes(s)) || textBefore.length > 30;
   }
@@ -168,14 +168,14 @@ function hasExplanationAfterEvidence(paragraph, directQuotes, hasParaphrase) {
 
   if (hasParaphrase) {
     const explanationSignals = [
-      “this shows”, “this demonstrates”, “this reveals”, “this suggests”,
-      “this illustrates”, “this highlights”, “this reflects”,
-      “this means”, “this implies”, “which shows”, “which demonstrates”,
-      “which reveals”, “which suggests”, “which means”,
-      “indicating”, “suggesting”, “demonstrating”, “revealing”,
-      “showing”, “illustrating”, “highlighting”,
-      “in other words”, “essentially”, “therefore”, “thus”,
-      “because of this”, “as a result”, “consequently”
+      "this shows", "this demonstrates", "this reveals", "this suggests",
+      "this illustrates", "this highlights", "this reflects",
+      "this means", "this implies", "which shows", "which demonstrates",
+      "which reveals", "which suggests", "which means",
+      "indicating", "suggesting", "demonstrating", "revealing",
+      "showing", "illustrating", "highlighting",
+      "in other words", "essentially", "therefore", "thus",
+      "because of this", "as a result", "consequently"
     ];
     const lower = paragraph.toLowerCase();
     if (explanationSignals.some(s => lower.includes(s))) return true;
