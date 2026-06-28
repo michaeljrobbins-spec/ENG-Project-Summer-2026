@@ -1,7 +1,16 @@
 const PROMPTS = {
-  welcome: `Welcome to the Macbeth Soliloquy Analysis Workshop! I'm here to help you explore one of Macbeth's soliloquies through three critical lenses and build toward a polished analytical essay.
+  welcome: `Welcome to this Macbeth Soliloquy Analysis Workshop! I'm here to help you explore one of Macbeth's soliloquies. We will look at it through the following lenses:
+1. Your own personal interpretation of the importance of the text
 
-Let's start by choosing a soliloquy to work with.`,
+2. Your thoughts on the literary importance of the text
+
+3. Your thoughts on the global importance of the text
+Your goal is to walk through the different lenses and then develop a three paragraph analysis of the work. By doing this, you'll accomplish the following goals:
+1. Interpret the meaning and significance of a Shakespearean soliloquy by examining it through multiple analytical lenses
+
+2. Synthesize evidence to support an analysis of a literary text
+
+3. Articulate the personal, literary, and global relevance of a literary text to a range of readers and contexts`,
 
   soliloquyChosen: (title) =>
     `Great choice! Let's dive into the soliloquy from **${title}**. Take a moment to read through it carefully — you can always scroll up to revisit the text.
