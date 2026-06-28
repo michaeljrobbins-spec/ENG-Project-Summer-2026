@@ -31,31 +31,26 @@ function evaluateWriting(paragraphs, soliloquyText) {
   });
 
   let evidenceCount = 0;
-  const quotePattern = /[""“”]([^""“”]{8,}?)[""“”]/g;
 
   const paragraphEvidenceResults = paragraphs.map((p, idx) => {
-    const quotes = [];
-    let match;
-    const regex = new RegExp(quotePattern.source, quotePattern.flags);
-    while ((match = regex.exec(p)) !== null) {
-      quotes.push(match[1]);
-    }
+    const directQuotes = extractDirectQuotes(p);
+    const hasDirectQuote = directQuotes.some(q => isFromSoliloquy(q, lines));
+    const hasParaphrase = detectsParaphrase(p, lines, lowerText);
+    const hasEvidence = hasDirectQuote || hasParaphrase;
+    const hasIntro = hasEvidence && hasIntroduction(p, directQuotes, hasParaphrase);
+    const hasExplanation = hasEvidence && hasExplanationAfterEvidence(p, directQuotes, hasParaphrase);
 
-    const hasQuote = quotes.some(q => isFromSoliloquy(q, lines));
-    const hasIntro = hasQuote && hasIntroduction(p, quotes);
-    const hasExplanation = hasQuote && hasExplanationAfterQuote(p, quotes);
+    if (hasEvidence && hasIntro && hasExplanation) evidenceCount++;
 
-    if (hasQuote && hasIntro && hasExplanation) evidenceCount++;
-
-    return { hasQuote, hasIntro, hasExplanation, lens: lensNames[idx] };
+    return { hasEvidence, hasIntro, hasExplanation, lens: lensNames[idx] };
   });
 
   const evidenceSatisfactory = evidenceCount >= 3;
   results.push({
-    id: "evidence",
-    score: evidenceSatisfactory ? "Satisfactory" : "Needs Revision",
+    id: “evidence”,
+    score: evidenceSatisfactory ? “Satisfactory” : “Needs Revision”,
     feedback: evidenceSatisfactory
-      ? "Each paragraph uses an evidence sandwich: quotes are introduced, cited, and explained in connection to the claim."
+      ? “Each paragraph integrates textual evidence — whether quoted or paraphrased — introduced and explained in connection to the claim.”
       : buildEvidenceFeedback(paragraphEvidenceResults)
   });
 
@@ -72,30 +67,112 @@ function evaluateWriting(paragraphs, soliloquyText) {
   return results;
 }
 
+function extractDirectQuotes(paragraph) {
+  const quotes = [];
+  const regex = /[“”””]([^””””]{8,}?)[“”””]/g;
+  let match;
+  while ((match = regex.exec(paragraph)) !== null) {
+    quotes.push(match[1]);
+  }
+  return quotes;
+}
+
 function isFromSoliloquy(quote, soliloquyLines) {
   const q = quote.toLowerCase().trim();
   if (q.length < 8) return false;
-
-  const words = q.split(/\s+/).slice(0, 6).join(" ");
+  const words = q.split(/\s+/).slice(0, 6).join(“ “);
   return soliloquyLines.some(line => line.includes(words) || words.includes(line));
 }
 
-function hasIntroduction(paragraph, quotes) {
-  if (quotes.length === 0) return false;
-  const firstQuoteIdx = paragraph.indexOf(quotes[0].charAt(0) === "“" ? quotes[0] : quotes[0]);
-  const textBefore = paragraph.substring(0, Math.max(0, paragraph.indexOf('"'))).toLowerCase();
-  const introSignals = ["macbeth", "he says", "he states", "shakespeare", "writes", "declares", "proclaims", "reflects", "reveals", "when macbeth", "in the", "at this point", "here,", "the line", "passage"];
-  return introSignals.some(s => textBefore.includes(s)) || textBefore.length > 30;
+function detectsParaphrase(paragraph, soliloquyLines, soliloquyFullLower) {
+  const p = paragraph.toLowerCase();
+
+  const keyPhrases = soliloquyFullLower
+    .split(/[,;:.!?\n]+/)
+    .map(s => s.trim().split(/\s+/))
+    .filter(words => words.length >= 3);
+
+  for (const phraseWords of keyPhrases) {
+    let matched = 0;
+    for (const w of phraseWords) {
+      if (w.length >= 4 && p.includes(w)) matched++;
+    }
+    if (matched >= 3 && matched >= phraseWords.length * 0.5) return true;
+  }
+
+  const referenceSignals = [
+    “macbeth describes”, “macbeth compares”, “macbeth refers”,
+    “macbeth suggests”, “macbeth laments”, “macbeth acknowledges”,
+    “macbeth recognizes”, “macbeth imagines”, “macbeth questions”,
+    “macbeth expresses”, “macbeth contemplates”, “macbeth realizes”,
+    “shakespeare describes”, “shakespeare compares”, “shakespeare uses”,
+    “shakespeare portrays”, “shakespeare suggests”,
+    “the soliloquy”, “the passage”, “the speech”,
+    “in this moment”, “in the text”, “in these lines”,
+    “he describes”, “he compares”, “he refers to”,
+    “he suggests”, “he laments”, “he envisions”
+  ];
+  if (referenceSignals.some(s => p.includes(s))) {
+    const soliloquyWords = soliloquyFullLower.split(/\s+/).filter(w => w.length >= 5);
+    const uniqueWords = [...new Set(soliloquyWords)];
+    const matchCount = uniqueWords.filter(w => p.includes(w)).length;
+    if (matchCount >= 3) return true;
+  }
+
+  return false;
 }
 
-function hasExplanationAfterQuote(paragraph, quotes) {
-  if (quotes.length === 0) return false;
-  const lastQuoteEnd = Math.max(...quotes.map(q => {
-    const idx = paragraph.indexOf(q);
-    return idx >= 0 ? idx + q.length : 0;
-  }));
-  const textAfter = paragraph.substring(lastQuoteEnd).trim();
-  return textAfter.length > 40;
+function hasIntroduction(paragraph, directQuotes, hasParaphrase) {
+  const lower = paragraph.toLowerCase();
+  const introSignals = [
+    “macbeth”, “he says”, “he states”, “shakespeare”, “writes”,
+    “declares”, “proclaims”, “reflects”, “reveals”, “when macbeth”,
+    “in the”, “at this point”, “here,”, “the line”, “passage”,
+    “describes”, “compares”, “suggests”, “laments”, “acknowledges”,
+    “expresses”, “contemplates”, “soliloquy”, “in this moment”,
+    “in these lines”, “the speech”, “the text”
+  ];
+
+  if (directQuotes.length > 0) {
+    const firstQuoteChar = paragraph.search(/[“”””]/);
+    const textBefore = lower.substring(0, Math.max(0, firstQuoteChar));
+    return introSignals.some(s => textBefore.includes(s)) || textBefore.length > 30;
+  }
+
+  if (hasParaphrase) {
+    return introSignals.some(s => lower.includes(s));
+  }
+
+  return false;
+}
+
+function hasExplanationAfterEvidence(paragraph, directQuotes, hasParaphrase) {
+  if (directQuotes.length > 0) {
+    const lastQuoteEnd = Math.max(...directQuotes.map(q => {
+      const idx = paragraph.indexOf(q);
+      return idx >= 0 ? idx + q.length : 0;
+    }));
+    const textAfter = paragraph.substring(lastQuoteEnd).trim();
+    if (textAfter.length > 40) return true;
+  }
+
+  if (hasParaphrase) {
+    const explanationSignals = [
+      “this shows”, “this demonstrates”, “this reveals”, “this suggests”,
+      “this illustrates”, “this highlights”, “this reflects”,
+      “this means”, “this implies”, “which shows”, “which demonstrates”,
+      “which reveals”, “which suggests”, “which means”,
+      “indicating”, “suggesting”, “demonstrating”, “revealing”,
+      “showing”, “illustrating”, “highlighting”,
+      “in other words”, “essentially”, “therefore”, “thus”,
+      “because of this”, “as a result”, “consequently”
+    ];
+    const lower = paragraph.toLowerCase();
+    if (explanationSignals.some(s => lower.includes(s))) return true;
+    if (paragraph.length > 200) return true;
+  }
+
+  return false;
 }
 
 function buildLensFeedback(detected) {
@@ -109,11 +186,11 @@ function buildEvidenceFeedback(results) {
   const issues = [];
   results.forEach(r => {
     const name = r.lens.charAt(0).toUpperCase() + r.lens.slice(1);
-    if (!r.hasQuote) {
-      issues.push(`${name} paragraph: no textual evidence found — include a direct quote from the soliloquy`);
+    if (!r.hasEvidence) {
+      issues.push(`${name} paragraph: no textual evidence found — include a direct quote or clear paraphrase from the soliloquy`);
     } else {
-      if (!r.hasIntro) issues.push(`${name} paragraph: introduce your quote before presenting it`);
-      if (!r.hasExplanation) issues.push(`${name} paragraph: explain how the quote supports your claim after presenting it`);
+      if (!r.hasIntro) issues.push(`${name} paragraph: introduce your evidence before presenting it`);
+      if (!r.hasExplanation) issues.push(`${name} paragraph: explain how the evidence supports your claim`);
     }
   });
   return issues.length > 0 ? issues.join(". ") + "." : "Review your evidence sandwiches in each paragraph.";
