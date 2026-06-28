@@ -167,89 +167,141 @@ class Chatbot {
 
   buildWritingTransition(lens) {
     const responses = this.studentResponses[lens];
-    const themes = this.synthesizeThemes(responses);
+    const detectedThemes = this.detectThemes(responses);
+    const exampleClaim = this.generateExampleClaim(lens, detectedThemes, this.selectedSoliloquy);
 
-    const lensFraming = {
-      personal: {
-        label: "Personal",
-        claimGuide: `why this passage matters to you personally. You explored ideas around ${themes} — distill that into one clear statement of personal significance.`,
-        evidenceGuide: "the specific moment in the text that sparked that personal response",
-        connectionGuide: "how those words connect to the personal experience or feeling you described"
-      },
-      discursive: {
-        label: "Discursive",
-        claimGuide: `what makes this passage significant as a work of literature. You noticed ${themes} — turn that observation into a clear argument about Shakespeare's craft.`,
-        evidenceGuide: "the specific language, device, or structural choice that demonstrates your point",
-        connectionGuide: "how that technique creates meaning — what it does to the reader's understanding or experience"
-      },
-      global: {
-        label: "Global",
-        claimGuide: `why this passage matters beyond the play. You drew connections to ${themes} — sharpen that into a claim about the passage's wider relevance.`,
-        evidenceGuide: "the moment in the text that carries that universal or real-world weight",
-        connectionGuide: "why those words resonate outside Shakespeare's world and speak to the broader issue you identified"
-      }
-    };
+    const lensLabels = { personal: "Personal", discursive: "Discursive", global: "Global" };
 
-    const f = lensFraming[lens];
+    return `Here's your blueprint for the **${lensLabels[lens]}** paragraph.
 
-    return `Here's your blueprint for the **${f.label}** paragraph. Three moves, in order:
+Your claim might be something like: *"${exampleClaim}"* — refine that in your own words.
 
-**1. Open with your claim.** State ${f.claimGuide}
+Three moves, in order:
 
-**2. Present your evidence.** Introduce ${f.evidenceGuide}. Set it up for the reader — who's speaking, what's happening — then quote or paraphrase the passage.
+**1. Open with your claim.** State that idea clearly in one sentence. This is the argument your paragraph will prove.
 
-**3. Explain the connection.** This is the most important move. Tell the reader ${f.connectionGuide}. Don't let the evidence speak for itself — that's your job.`;
+**2. Introduce and present your evidence.** Set up the moment from the text — tell the reader who is speaking and what is happening, then quote or paraphrase the specific passage that supports your claim.
+
+**3. Explain the connection.** This is the most important move. Tell the reader exactly *how* and *why* that evidence supports your claim. Don't let the quote speak for itself — that's your job.`;
   }
 
-  synthesizeThemes(responses) {
+  detectThemes(responses) {
     const combined = responses.join(" ").toLowerCase();
+    const themes = [];
 
-    const stopWords = new Set(["the", "a", "an", "is", "are", "was", "were", "it", "this", "that", "and", "or", "but", "in", "on", "at", "to", "for", "of", "with", "as", "by", "from", "i", "my", "me", "you", "he", "she", "they", "we", "his", "her", "its", "our", "their", "be", "been", "being", "have", "has", "had", "do", "does", "did", "will", "would", "could", "should", "can", "may", "might", "not", "so", "if", "when", "how", "what", "which", "who", "whom", "there", "here", "very", "just", "about", "also", "than", "then", "more", "most", "some", "such", "like", "think", "really", "because", "through", "feel", "make", "much", "many", "even", "still", "well", "back", "into", "over", "after", "before", "between", "each", "only", "other", "been", "same", "made", "way", "them", "these", "those", "said", "passage", "soliloquy", "macbeth", "quote", "line", "text", "shakespeare"]);
+    const themePatterns = [
+      { theme: "ambition", patterns: ["ambiti", "driven", "desire", "want", "goal", "striv", "power-hungry", "aspir"] },
+      { theme: "guilt", patterns: ["guilt", "conscience", "regret", "remorse", "haunted", "torment", "shame", "wrong"] },
+      { theme: "fear", patterns: ["fear", "afraid", "dread", "anxi", "terror", "paranoi", "scared", "fright"] },
+      { theme: "mortality", patterns: ["death", "mortal", "dying", "die", "life and death", "fleeting", "brief", "end of life", "finite"] },
+      { theme: "meaninglessness", patterns: ["meaning", "nothing", "pointless", "purpose", "futile", "absurd", "empty", "void", "nihil"] },
+      { theme: "moral conflict", patterns: ["moral", "right and wrong", "conscience", "ethical", "dilemma", "torn", "conflict", "struggle between"] },
+      { theme: "madness", patterns: ["mad", "sane", "insanity", "hallucin", "vision", "imagin", "unravel", "losing.*mind", "mental"] },
+      { theme: "isolation", patterns: ["alone", "isolat", "lonely", "solitary", "abandoned", "cut off", "no one"] },
+      { theme: "violence", patterns: ["violen", "blood", "murder", "kill", "destroy", "brutal", "savage", "cruel"] },
+      { theme: "despair", patterns: ["despair", "hopeless", "bleakness", "dark", "sorrow", "grief", "misery", "suffer"] },
+      { theme: "deception", patterns: ["decei", "false", "illusion", "pretend", "mask", "hide", "appear", "seeming"] },
+      { theme: "power", patterns: ["power", "control", "dominat", "authority", "ruling", "tyran", "command", "reign"] },
+      { theme: "fate", patterns: ["fate", "destin", "inevit", "prophec", "foretold", "predetermin", "doom"] },
+      { theme: "time", patterns: ["time", "tomorrow", "yesterday", "moment", "passing", "tempo", "forever", "transien"] },
+      { theme: "imagery", patterns: ["imag", "visual", "picture", "scene", "vivid", "paint", "symbol"] },
+      { theme: "metaphor", patterns: ["metaphor", "compar", "like a", "as a", "represents", "figurativ", "analogy"] },
+      { theme: "repetition", patterns: ["repeti", "repeat", "again and again", "echoes", "recurring", "pattern"] },
+      { theme: "dramatic irony", patterns: ["irony", "ironic", "audience knows", "dramatic", "tragic irony"] },
+      { theme: "soliloquy as revelation", patterns: ["inner", "thought", "reveal", "private", "interior", "true feeling", "honest"] },
+      { theme: "loss", patterns: ["loss", "lost", "losing", "grief", "mourn", "gone", "taken away"] },
+      { theme: "leadership", patterns: ["leader", "king", "ruler", "govern", "politic", "regime", "dictator", "authoritarian"] },
+      { theme: "justice", patterns: ["justice", "punish", "consequence", "accountab", "judgment", "deserv", "karmic"] },
+      { theme: "human nature", patterns: ["human nature", "universal", "everyone", "all of us", "people", "mankind", "humanity", "condition"] },
+      { theme: "relevance today", patterns: ["today", "modern", "current", "contemporary", "still", "now", "our time", "21st", "present"] }
+    ];
 
-    const phrases = this.extractPhrases(combined, stopWords);
-    const words = this.extractTopWords(combined, stopWords);
-
-    const themes = phrases.length > 0 ? phrases : words;
-
-    if (themes.length === 0) return "some important ideas";
-    if (themes.length === 1) return themes[0];
-    if (themes.length === 2) return `${themes[0]} and ${themes[1]}`;
-    return `${themes.slice(0, -1).join(", ")}, and ${themes[themes.length - 1]}`;
-  }
-
-  extractPhrases(text, stopWords) {
-    const bigrams = [];
-    const words = text.split(/\s+/).map(w => w.replace(/[^a-z]/g, "")).filter(Boolean);
-
-    const bigramCounts = {};
-    for (let i = 0; i < words.length - 1; i++) {
-      const a = words[i], b = words[i + 1];
-      if (a.length > 3 && b.length > 3 && !stopWords.has(a) && !stopWords.has(b)) {
-        const pair = `${a} ${b}`;
-        bigramCounts[pair] = (bigramCounts[pair] || 0) + 1;
+    for (const { theme, patterns } of themePatterns) {
+      const matchCount = patterns.filter(p => {
+        if (p.includes("*")) {
+          const regex = new RegExp(p.replace(".*", ".*"));
+          return regex.test(combined);
+        }
+        return combined.includes(p);
+      }).length;
+      if (matchCount >= 2) {
+        themes.push({ theme, strength: matchCount });
       }
     }
 
-    return Object.entries(bigramCounts)
-      .filter(([, count]) => count >= 2)
-      .sort((a, b) => b[1] - a[1])
-      .slice(0, 3)
-      .map(([phrase]) => phrase);
+    themes.sort((a, b) => b.strength - a.strength);
+    return themes.slice(0, 3).map(t => t.theme);
   }
 
-  extractTopWords(text, stopWords) {
-    const wordCounts = {};
-    text.split(/\s+/).forEach(w => {
-      const clean = w.replace(/[^a-z]/g, "");
-      if (clean.length > 4 && !stopWords.has(clean)) {
-        wordCounts[clean] = (wordCounts[clean] || 0) + 1;
-      }
-    });
+  generateExampleClaim(lens, detectedThemes, soliloquy) {
+    const title = soliloquy.title;
+    const primary = detectedThemes[0] || null;
+    const secondary = detectedThemes[1] || null;
 
-    return Object.entries(wordCounts)
-      .sort((a, b) => b[1] - a[1])
-      .slice(0, 3)
-      .map(([w]) => w);
+    const claimTemplates = {
+      personal: {
+        ambition: "This soliloquy captures the destructive pull of ambition, a force that resonates with anyone who has sacrificed what matters for what glitters.",
+        guilt: "Macbeth's words give voice to the weight of guilt, a burden familiar to anyone who has acted against their own conscience.",
+        fear: "This passage lays bare a primal fear of consequences that speaks to the anxiety of irreversible choices.",
+        mortality: "The soliloquy confronts the brevity of life in a way that forces the reader to reckon with their own sense of impermanence.",
+        meaninglessness: "Macbeth's nihilism in this passage mirrors moments of personal despair when life seems drained of purpose.",
+        "moral conflict": "This soliloquy dramatizes the agony of choosing between desire and duty, a tension that defines many personal crossroads.",
+        madness: "Macbeth's unraveling mind in this passage evokes the disorienting experience of losing one's grip on reality.",
+        isolation: "The profound loneliness in these lines resonates with anyone who has felt cut off from the people and values that once anchored them.",
+        violence: "The raw brutality of Macbeth's resolve forces the reader to confront their own relationship with anger and aggression.",
+        despair: "This soliloquy articulates a depth of despair that connects to universal experiences of loss and hopelessness.",
+        deception: "Macbeth's struggle between appearance and truth mirrors the personal cost of living behind a mask.",
+        power: "The intoxication of power in this passage speaks to anyone who has felt the pull of control over others.",
+        fate: "This passage raises unsettling questions about free will that resonate with anyone who has wondered whether their choices truly matter.",
+        time: "Macbeth's meditation on time captures a deeply personal anxiety about how quickly life slips away.",
+        loss: "The grief woven through this passage connects to the universal ache of losing something that cannot be recovered.",
+        _default: "This soliloquy gives voice to an emotional truth that resonates beyond the world of the play and speaks to deeply personal experience."
+      },
+      discursive: {
+        ambition: "Shakespeare uses this soliloquy to anatomize ambition through layered imagery, revealing how poetic form can make an abstract drive feel visceral.",
+        guilt: "Through dense figurative language, Shakespeare transforms guilt from an abstract concept into a palpable, physical presence in the text.",
+        fear: "Shakespeare's imagery in this passage externalizes Macbeth's inner terror, demonstrating how literary craft can make psychological states visible.",
+        mortality: "The soliloquy's compressed metaphors distill the enormity of mortality into language that is both intimate and cosmic in scale.",
+        meaninglessness: "Shakespeare's use of accumulated metaphor in this passage builds a literary argument for meaninglessness that gains force through sheer rhetorical momentum.",
+        "moral conflict": "This soliloquy showcases Shakespeare's ability to dramatize moral reasoning through the structure and rhythm of verse itself.",
+        madness: "Shakespeare blurs the boundary between perception and hallucination, using the soliloquy form to stage a crisis of consciousness in real time.",
+        isolation: "The soliloquy form itself becomes a literary device here, enacting Macbeth's isolation by trapping the audience inside his solitary mind.",
+        violence: "Shakespeare transforms violent intent into poetic spectacle, using imagery and diction to make the reader feel the gravity of what is about to happen.",
+        despair: "The literary power of this passage lies in how Shakespeare uses rhythm, repetition, and imagery to make despair feel both inevitable and infinite.",
+        deception: "Shakespeare layers irony and ambiguity throughout this soliloquy, using literary technique to mirror the instability of truth in Macbeth's world.",
+        power: "This passage demonstrates how Shakespeare uses the soliloquy to expose the gap between public authority and private doubt.",
+        imagery: "The density of imagery in this passage reveals Shakespeare's craft at its most concentrated, layering visual and sensory language to build meaning.",
+        metaphor: "Shakespeare's extended metaphor in this soliloquy is a masterclass in how figurative language can carry an argument the speaker cannot state directly.",
+        repetition: "The deliberate repetition in this passage creates a rhythmic insistence that mirrors the obsessive quality of Macbeth's thought.",
+        "dramatic irony": "Shakespeare deploys dramatic irony to create a gap between what Macbeth believes and what the audience knows, deepening the tragedy.",
+        "soliloquy as revelation": "The soliloquy form allows Shakespeare to reveal Macbeth's true psychology, giving the audience access to truths the character hides from everyone else.",
+        _default: "This soliloquy demonstrates Shakespeare's ability to use poetic language and dramatic structure to reveal psychological complexity."
+      },
+      global: {
+        ambition: "This soliloquy exposes the human cost of unchecked ambition, a theme that echoes through political history from ancient Rome to the present day.",
+        guilt: "Macbeth's guilt speaks to a universal moral architecture: the idea that wrongdoing carries an internal cost no amount of power can erase.",
+        fear: "The fear Macbeth voices here reflects a broader truth about how anticipation of consequences shapes human behavior across all societies.",
+        mortality: "This passage distills a confrontation with mortality that transcends its historical moment and speaks to every culture's reckoning with death.",
+        meaninglessness: "Macbeth's nihilistic vision anticipates modern existential philosophy and remains startlingly relevant in an era of widespread disillusionment.",
+        "moral conflict": "The moral crisis at the heart of this soliloquy mirrors the ethical dilemmas that define leadership, governance, and personal responsibility in any era.",
+        madness: "Macbeth's psychological disintegration raises enduring questions about the mental toll of power, relevant from Tudor politics to modern authoritarianism.",
+        isolation: "The isolation Macbeth expresses speaks to a global pattern: the loneliness that accompanies power, transgression, or the collapse of social bonds.",
+        violence: "This passage forces a reckoning with political violence and its justifications, a conversation as urgent now as it was in Shakespeare's England.",
+        despair: "Macbeth's despair articulates a crisis of meaning that resonates across cultures, from ancient tragedy to contemporary discourse on mental health.",
+        power: "This soliloquy interrogates the relationship between power and moral corruption, a dynamic that plays out in political systems across the globe.",
+        fate: "The tension between fate and free will in this passage speaks to philosophical and religious debates that span every major world tradition.",
+        "human nature": "This passage holds up a mirror to human nature itself, capturing truths about desire, consequence, and self-knowledge that cross every cultural boundary.",
+        "relevance today": "The concerns voiced in this soliloquy remain strikingly contemporary, connecting Shakespeare's world to present-day struggles with power, meaning, and moral clarity.",
+        justice: "Macbeth's awareness of justice and consequence reflects an enduring human belief that moral order ultimately reasserts itself, a conviction tested throughout history.",
+        leadership: "This soliloquy reveals the psychology of a leader in moral freefall, a portrait that resonates with political crises across centuries and continents.",
+        _default: "This soliloquy captures a dimension of the human condition that transcends its historical moment and speaks to enduring questions about how we live."
+      }
+    };
+
+    const templates = claimTemplates[lens];
+    if (primary && templates[primary]) return templates[primary];
+    if (secondary && templates[secondary]) return templates[secondary];
+    return templates._default;
   }
 
   parseParagraphs(text) {
