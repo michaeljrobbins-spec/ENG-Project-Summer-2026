@@ -161,7 +161,12 @@ class Chatbot {
         return responses;
       } else {
         this.phase = PHASES.SHOW_GUIDE;
-        return [{ text: PROMPTS.guideReady, type: "bot" }];
+        const responses = [];
+        if (this.selectedSoliloquy.guideSummary) {
+          responses.push({ text: this.selectedSoliloquy.guideSummary, type: "bot", className: "transition" });
+        }
+        responses.push({ text: PROMPTS.guideReady, type: "bot" });
+        return responses;
       }
     }
 
