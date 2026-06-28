@@ -4,9 +4,18 @@ function evaluateWriting(paragraphs, soliloquyText) {
   const lines = soliloquyText.split("\n").map(l => l.trim().toLowerCase()).filter(Boolean);
 
   const lensKeywords = {
-    personal: ["i ", "my ", "me ", "personally", "my own", "i feel", "i felt", "my experience", "my life", "reminds me", "i relate", "i connect"],
-    discursive: ["metaphor", "imagery", "literary", "shakespeare", "device", "symbol", "theme", "motif", "soliloquy", "dramatic", "irony", "alliteration", "repetition", "structure", "craft", "language", "diction", "tone", "literature", "tragic", "character"],
-    global: ["world", "society", "universal", "human", "politic", "history", "culture", "today", "modern", "relevant", "global", "moral", "ethic", "power", "justice", "humanity", "nation", "govern", "leader"]
+    personal: {
+      strong: ["personally", "my own", "i feel", "i felt", "my experience", "my life", "reminds me", "i relate", "i connect", "i identify", "i recognize", "strikes me", "moves me", "resonates with me", "in my own"],
+      weak: ["i ", "my ", "me "]
+    },
+    discursive: {
+      strong: ["metaphor", "imagery", "literary", "shakespeare", "device", "symbol", "theme", "motif", "soliloquy", "dramatic", "irony", "alliteration", "repetition", "structure", "craft", "diction", "tone", "literature", "tragic", "character development", "literary technique", "poetic"],
+      weak: ["language", "character"]
+    },
+    global: {
+      strong: ["society", "universal", "politic", "history", "culture", "modern", "global", "ethic", "justice", "humanity", "nation", "govern", "leader", "the world", "across time", "relevant today", "human condition", "social", "collective"],
+      weak: ["world", "human", "power", "moral", "today", "relevant"]
+    }
   };
 
   const lensNames = ["personal", "discursive", "global"];
@@ -15,9 +24,10 @@ function evaluateWriting(paragraphs, soliloquyText) {
   for (let i = 0; i < 3; i++) {
     if (i < paragraphs.length) {
       const p = paragraphs[i].toLowerCase();
-      const keywords = lensKeywords[lensNames[i]];
-      const matches = keywords.filter(k => p.includes(k));
-      lensDetected[i] = matches.length >= 2;
+      const lens = lensKeywords[lensNames[i]];
+      const strongMatches = lens.strong.filter(k => p.includes(k)).length;
+      const weakMatches = lens.weak.filter(k => p.includes(k)).length;
+      lensDetected[i] = strongMatches >= 1 || (strongMatches + weakMatches >= 3);
     }
   }
 
