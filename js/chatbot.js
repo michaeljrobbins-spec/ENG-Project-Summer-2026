@@ -1,5 +1,7 @@
 const PHASES = {
   SELECT_SOLILOQUY: "select_soliloquy",
+  OFFER_GUIDE: "offer_guide",
+  SHOW_GUIDE: "show_guide",
   LENS_INTRO: "lens_intro",
   LENS_QUESTION: "lens_question",
   LENS_WRAPUP: "lens_wrapup",
@@ -39,6 +41,10 @@ class Chatbot {
     switch (this.phase) {
       case PHASES.SELECT_SOLILOQUY:
         return this.handleSoliloquySelection(input);
+      case PHASES.OFFER_GUIDE:
+        return this.handleGuideOffer(input);
+      case PHASES.SHOW_GUIDE:
+        return this.handleGuideReady(input);
       case PHASES.LENS_QUESTION:
         return this.handleLensResponse(input);
       case PHASES.WRITING:
@@ -79,14 +85,60 @@ class Chatbot {
       className: "soliloquy-display"
     });
 
+    this.phase = PHASES.OFFER_GUIDE;
+    responses.push({ text: PROMPTS.guideOffer, type: "bot" });
+
+    return responses;
+  }
+
+  handleGuideOffer(input) {
+    const lower = input.toLowerCase();
+    const yes = ["yes", "yeah", "sure", "ok", "okay", "please", "yep", "yea", "y"];
+    const no = ["no", "nah", "nope", "skip", "n", "i'm good", "im good", "no thanks", "ready"];
+
+    if (yes.some(w => lower.includes(w))) {
+      const responses = [];
+      const guide = this.selectedSoliloquy.guide;
+
+      responses.push({ text: PROMPTS.guideIntro, type: "bot" });
+
+      guide.chunks.forEach((chunk, i) => {
+        const header = `**Part ${i + 1} of ${guide.chunks.length}:**`;
+        const lines = chunk.lines;
+        const paraphrase = `*In plain language:* ${chunk.paraphrase}`;
+        const notice = `*What to notice:* ${chunk.notice}`;
+        responses.push({
+          text: `${header}\n\n${lines}\n\n${paraphrase}\n\n${notice}`,
+          type: "bot",
+          className: "guide-chunk"
+        });
+      });
+
+      this.phase = PHASES.SHOW_GUIDE;
+      responses.push({ text: PROMPTS.guideReady, type: "bot" });
+      return responses;
+    }
+
+    if (no.some(w => lower.includes(w))) {
+      return this.beginLensQuestions();
+    }
+
+    return [{ text: "Just type **yes** if you'd like help understanding the passage, or **no** to jump straight into the analysis.", type: "bot" }];
+  }
+
+  handleGuideReady(input) {
+    return this.beginLensQuestions();
+  }
+
+  beginLensQuestions() {
     this.phase = PHASES.LENS_QUESTION;
     this.currentLensIndex = 0;
     this.currentQuestionIndex = 0;
 
+    const responses = [];
     const lens = LENS_ORDER[0];
     responses.push({ text: PROMPTS.lenses[lens].intro, type: "bot" });
     responses.push({ text: PROMPTS.lenses[lens].questions[0], type: "bot", className: "question" });
-
     return responses;
   }
 

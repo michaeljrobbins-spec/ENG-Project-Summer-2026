@@ -8,6 +8,16 @@ Let's start by choosing a soliloquy to work with.`,
 
 We'll work through three analytical lenses, one at a time. Each lens asks you to think about the passage from a different angle. After all three, you'll write a short essay with one paragraph per lens.`,
 
+  guideOffer: `Before we start analyzing, would you like a brief guide to help you understand this passage? I can walk you through it section by section with plain-language explanations.
+
+Type **yes** for the reading guide, or **no** to jump straight into the analysis.`,
+
+  guideIntro: `Here's a section-by-section breakdown of the soliloquy. Take your time reading through each part.`,
+
+  guideReady: `That's the full passage broken down. Take a moment to scroll back through if you need to — the original text is also above for reference.
+
+When you're ready, type anything to begin the analysis.`,
+
   lenses: {
     personal: {
       name: "Personal",

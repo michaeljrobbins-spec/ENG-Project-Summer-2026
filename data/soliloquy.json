@@ -4,27 +4,118 @@
     "title": "Act 1, Scene 7",
     "label": "\"If it were done when 'tis done...\"",
     "context": "Macbeth wrestles with whether to murder King Duncan, weighing ambition against morality and loyalty.",
-    "text": "If it were done when 'tis done, then 'twere well\nIt were done quickly: if the assassination\nCould trammel up the consequence, and catch\nWith his surcease success; that but this blow\nMight be the be-all and the end-all here,\nBut here, upon this bank and shoal of time,\nWe'ld jump the life to come. But in these cases\nWe still have judgment here; that we but teach\nBloody instructions, which, being taught, return\nTo plague the inventor: this even-handed justice\nCommends the ingredients of our poison'd chalice\nTo our own lips. He's here in double trust;\nFirst, as I am his kinsman and his subject,\nStrong both against the deed; then, as his host,\nWho should against his murderer shut the door,\nNot bear the knife myself. Besides, this Duncan\nHath borne his faculties so meek, hath been\nSo clear in his great office, that his virtues\nWill plead like angels, trumpet-tongued, against\nThe deep damnation of his taking-off;\nAnd pity, like a naked new-born babe,\nStriding the blast, or heaven's cherubin, horsed\nUpon the sightless couriers of the air,\nShall blow the horrid deed in every eye,\nThat tears shall drown the wind. I have no spur\nTo prick the sides of my intent, but only\nVaulting ambition, which o'erleaps itself\nAnd falls on the other."
+    "text": "If it were done when 'tis done, then 'twere well\nIt were done quickly: if the assassination\nCould trammel up the consequence, and catch\nWith his surcease success; that but this blow\nMight be the be-all and the end-all here,\nBut here, upon this bank and shoal of time,\nWe'ld jump the life to come. But in these cases\nWe still have judgment here; that we but teach\nBloody instructions, which, being taught, return\nTo plague the inventor: this even-handed justice\nCommends the ingredients of our poison'd chalice\nTo our own lips. He's here in double trust;\nFirst, as I am his kinsman and his subject,\nStrong both against the deed; then, as his host,\nWho should against his murderer shut the door,\nNot bear the knife myself. Besides, this Duncan\nHath borne his faculties so meek, hath been\nSo clear in his great office, that his virtues\nWill plead like angels, trumpet-tongued, against\nThe deep damnation of his taking-off;\nAnd pity, like a naked new-born babe,\nStriding the blast, or heaven's cherubin, horsed\nUpon the sightless couriers of the air,\nShall blow the horrid deed in every eye,\nThat tears shall drown the wind. I have no spur\nTo prick the sides of my intent, but only\nVaulting ambition, which o'erleaps itself\nAnd falls on the other.",
+    "guide": {
+      "chunks": [
+        {
+          "lines": "If it were done when 'tis done, then 'twere well\nIt were done quickly: if the assassination\nCould trammel up the consequence, and catch\nWith his surcease success; that but this blow\nMight be the be-all and the end-all here,\nBut here, upon this bank and shoal of time,\nWe'ld jump the life to come.",
+          "paraphrase": "If murdering Duncan could be done without any consequences — if this one act could end the matter completely, right here and now — then it would be best to do it quickly. Macbeth wishes he could skip past any punishment in the afterlife.",
+          "notice": "Notice how tangled the language is in these opening lines. Macbeth can barely get the words out — the twisted syntax mirrors a mind trying to talk itself into something terrible."
+        },
+        {
+          "lines": "But in these cases\nWe still have judgment here; that we but teach\nBloody instructions, which, being taught, return\nTo plague the inventor: this even-handed justice\nCommends the ingredients of our poison'd chalice\nTo our own lips.",
+          "paraphrase": "But there are always consequences in this life. When you teach others that violence is acceptable, that lesson comes back to haunt you. Justice is fair — if you poison someone, you end up drinking from the same cup.",
+          "notice": "The metaphor of the 'poison'd chalice' is central: Macbeth recognizes that violence is a cup you prepare for others but end up drinking yourself."
+        },
+        {
+          "lines": "He's here in double trust;\nFirst, as I am his kinsman and his subject,\nStrong both against the deed; then, as his host,\nWho should against his murderer shut the door,\nNot bear the knife myself.",
+          "paraphrase": "Duncan trusts Macbeth doubly: first, because Macbeth is his relative and his loyal subject; second, because Macbeth is his host. A host is supposed to protect guests from harm, not be the one holding the knife.",
+          "notice": "Macbeth lists the reasons he should NOT kill Duncan — and every reason is about duty and trust. He knows exactly what he is betraying."
+        },
+        {
+          "lines": "Besides, this Duncan\nHath borne his faculties so meek, hath been\nSo clear in his great office, that his virtues\nWill plead like angels, trumpet-tongued, against\nThe deep damnation of his taking-off;\nAnd pity, like a naked new-born babe,\nStriding the blast, or heaven's cherubin, horsed\nUpon the sightless couriers of the air,\nShall blow the horrid deed in every eye,\nThat tears shall drown the wind.",
+          "paraphrase": "On top of all that, Duncan has been a good and humble king. His goodness is so powerful that if he were murdered, his virtues would cry out like angels against the crime. Pity itself — imagined as a helpless newborn baby or angels riding the wind — would expose the horrible deed to everyone, and the whole world would weep.",
+          "notice": "The imagery explodes here: angels, a newborn baby, heavenly riders on the wind. Macbeth's imagination makes Duncan's goodness feel cosmic and overwhelming — which makes the planned murder feel even more monstrous."
+        },
+        {
+          "lines": "I have no spur\nTo prick the sides of my intent, but only\nVaulting ambition, which o'erleaps itself\nAnd falls on the other.",
+          "paraphrase": "Macbeth admits he has no good reason to do this — no justification at all — except his own ambition. And that ambition is like a rider who jumps too eagerly onto a horse and falls off the other side.",
+          "notice": "This is the conclusion Macbeth reaches: ambition is his only motive, and it is self-defeating. The image of overleaping and falling foreshadows his eventual downfall."
+        }
+      ]
+    }
   },
   {
     "id": "act2scene1",
     "title": "Act 2, Scene 1",
     "label": "\"Is this a dagger which I see before me...\"",
     "context": "Macbeth hallucinates a dagger leading him toward Duncan's chamber, blurring the line between imagination and reality.",
-    "text": "Is this a dagger which I see before me,\nThe handle toward my hand? Come, let me clutch thee.\nI have thee not, and yet I see thee still.\nArt thou not, fatal vision, sensible\nTo feeling as to sight? or art thou but\nA dagger of the mind, a false creation,\nProceeding from the heat-oppressed brain?\nI see thee yet, in form as palpable\nAs this which now I draw.\nThou marshall'st me the way that I was going;\nAnd such an instrument I was to use.\nMine eyes are made the fools o' the other senses,\nOr else worth all the rest; I see thee still,\nAnd on thy blade and dudgeon gouts of blood,\nWhich was not so before. There's no such thing:\nIt is the bloody business which informs\nThus to mine eyes. Now o'er the one halfworld\nNature seems dead, and wicked dreams abuse\nThe curtain'd sleep; witchcraft celebrates\nPale Hecate's offerings, and wither'd murder,\nAlarum'd by his sentinel, the wolf,\nWhose howl's his watch, thus with his stealthy pace,\nWith Tarquin's ravishing strides, towards his design\nMoves like a ghost. Thou sure and firm-set earth,\nHear not my steps, which way they walk, for fear\nThy very stones prate of my whereabout,\nAnd take the present horror from the time,\nWhich now suits with it. Whiles I threat, he lives:\nWords to the heat of deeds too cold breath gives.\nI go, and it is done; the bell invites me.\nHear it not, Duncan; for it is a knell\nThat summons thee to heaven or to hell."
+    "text": "Is this a dagger which I see before me,\nThe handle toward my hand? Come, let me clutch thee.\nI have thee not, and yet I see thee still.\nArt thou not, fatal vision, sensible\nTo feeling as to sight? or art thou but\nA dagger of the mind, a false creation,\nProceeding from the heat-oppressed brain?\nI see thee yet, in form as palpable\nAs this which now I draw.\nThou marshall'st me the way that I was going;\nAnd such an instrument I was to use.\nMine eyes are made the fools o' the other senses,\nOr else worth all the rest; I see thee still,\nAnd on thy blade and dudgeon gouts of blood,\nWhich was not so before. There's no such thing:\nIt is the bloody business which informs\nThus to mine eyes. Now o'er the one halfworld\nNature seems dead, and wicked dreams abuse\nThe curtain'd sleep; witchcraft celebrates\nPale Hecate's offerings, and wither'd murder,\nAlarum'd by his sentinel, the wolf,\nWhose howl's his watch, thus with his stealthy pace,\nWith Tarquin's ravishing strides, towards his design\nMoves like a ghost. Thou sure and firm-set earth,\nHear not my steps, which way they walk, for fear\nThy very stones prate of my whereabout,\nAnd take the present horror from the time,\nWhich now suits with it. Whiles I threat, he lives:\nWords to the heat of deeds too cold breath gives.\nI go, and it is done; the bell invites me.\nHear it not, Duncan; for it is a knell\nThat summons thee to heaven or to hell.",
+    "guide": {
+      "chunks": [
+        {
+          "lines": "Is this a dagger which I see before me,\nThe handle toward my hand? Come, let me clutch thee.\nI have thee not, and yet I see thee still.\nArt thou not, fatal vision, sensible\nTo feeling as to sight? or art thou but\nA dagger of the mind, a false creation,\nProceeding from the heat-oppressed brain?",
+          "paraphrase": "Macbeth sees a dagger floating in the air, handle pointing toward him as if inviting him to grab it. He reaches for it but cannot touch it — yet he can still see it. He asks: are you real, something I can feel as well as see? Or are you just a hallucination, something my stressed and feverish mind has invented?",
+          "notice": "Macbeth immediately questions his own perception. The phrase 'heat-oppressed brain' tells us he knows something is wrong with his mind, but he cannot stop seeing the dagger."
+        },
+        {
+          "lines": "I see thee yet, in form as palpable\nAs this which now I draw.\nThou marshall'st me the way that I was going;\nAnd such an instrument I was to use.\nMine eyes are made the fools o' the other senses,\nOr else worth all the rest; I see thee still,\nAnd on thy blade and dudgeon gouts of blood,\nWhich was not so before.",
+          "paraphrase": "The vision looks as solid and real as the actual dagger Macbeth now draws from his belt. The phantom dagger seems to lead him toward Duncan's room — exactly where he was already headed, using exactly the kind of weapon he planned to use. Either his eyes are being tricked while his other senses know the truth, or his eyes are seeing something the rest of him cannot. Then the hallucination worsens: he sees drops of blood appear on the blade and handle.",
+          "notice": "The dagger is 'marshalling' him — leading him like a guide. Macbeth is watching himself being pulled toward murder, as though some external force is directing him. The blood appearing on the blade marks the hallucination intensifying."
+        },
+        {
+          "lines": "There's no such thing:\nIt is the bloody business which informs\nThus to mine eyes. Now o'er the one halfworld\nNature seems dead, and wicked dreams abuse\nThe curtain'd sleep; witchcraft celebrates\nPale Hecate's offerings, and wither'd murder,\nAlarum'd by his sentinel, the wolf,\nWhose howl's his watch, thus with his stealthy pace,\nWith Tarquin's ravishing strides, towards his design\nMoves like a ghost.",
+          "paraphrase": "Macbeth snaps out of it: the dagger is not real. It is the horrific act he is about to commit that is projecting images onto his eyes. He then describes the nighttime world around him: nature itself seems dead, nightmares torment sleepers, witchcraft is at work, and murder — personified as a withered old figure, alerted by the howl of a wolf — creeps forward like a ghost toward its victim, moving with the same terrible purpose as Tarquin (a Roman king infamous for committing a rape).",
+          "notice": "Macbeth shifts from questioning his own sanity to describing the entire world as a landscape of evil. The reference to Tarquin connects Macbeth's crime to a notorious act of violation from classical history."
+        },
+        {
+          "lines": "Thou sure and firm-set earth,\nHear not my steps, which way they walk, for fear\nThy very stones prate of my whereabout,\nAnd take the present horror from the time,\nWhich now suits with it. Whiles I threat, he lives:\nWords to the heat of deeds too cold breath gives.\nI go, and it is done; the bell invites me.\nHear it not, Duncan; for it is a knell\nThat summons thee to heaven or to hell.",
+          "paraphrase": "Macbeth asks the ground not to listen to his footsteps, afraid that even the stones will reveal where he is going. He tells himself to stop talking — while he stands here making threats, Duncan is still alive. Words cool down the heat of action. Then a bell rings, and Macbeth takes it as his signal. He tells Duncan not to hear it, because it is a death bell — summoning Duncan either to heaven or to hell.",
+          "notice": "The final couplet ('Whiles I threat, he lives: / Words to the heat of deeds too cold breath gives') is the turning point. Macbeth recognizes that talking is a form of hesitation, and he forces himself to act. The bell transforms from a household sound into a funeral knell."
+        }
+      ]
+    }
   },
   {
     "id": "act4scene1",
     "title": "Act 4, Scene 1",
     "label": "\"From this moment the very firstlings of my heart...\"",
     "context": "After seeing the witches' apparitions, Macbeth resolves to act on impulse without hesitation, vowing to destroy Macduff's family.",
-    "text": "Time, thou anticipatest my dread exploits:\nThe flighty purpose never is o'ertook\nUnless the deed go with it; from this moment\nThe very firstlings of my heart shall be\nThe firstlings of my hand. And even now,\nTo crown my thoughts with acts, be it thought and done:\nThe castle of Macduff I will surprise;\nSeize upon Fife; give to the edge o' the sword\nHis wife, his babes, and all unfortunate souls\nThat trace him in his line. No boasting like a fool;\nThis deed I'll do before this purpose cool.\nBut no more sights!--Where are these gentlemen?\nCome, bring me where they are."
+    "text": "Time, thou anticipatest my dread exploits:\nThe flighty purpose never is o'ertook\nUnless the deed go with it; from this moment\nThe very firstlings of my heart shall be\nThe firstlings of my hand. And even now,\nTo crown my thoughts with acts, be it thought and done:\nThe castle of Macduff I will surprise;\nSeize upon Fife; give to the edge o' the sword\nHis wife, his babes, and all unfortunate souls\nThat trace him in his line. No boasting like a fool;\nThis deed I'll do before this purpose cool.\nBut no more sights!--Where are these gentlemen?\nCome, bring me where they are.",
+    "guide": {
+      "chunks": [
+        {
+          "lines": "Time, thou anticipatest my dread exploits:\nThe flighty purpose never is o'ertook\nUnless the deed go with it; from this moment\nThe very firstlings of my heart shall be\nThe firstlings of my hand.",
+          "paraphrase": "Macbeth complains that time keeps getting ahead of him — his plans expire before he can carry them out. He has learned a lesson: if you want to accomplish something terrible, you must act the instant you think of it. From now on, the very first impulse of his heart will immediately become action.",
+          "notice": "Compare this to Act 1, Scene 7, where Macbeth agonized over every reason not to act. Here, he has eliminated all deliberation. The word 'firstlings' (meaning first-born, earliest impulses) appears twice — thought and action are now fused into one."
+        },
+        {
+          "lines": "And even now,\nTo crown my thoughts with acts, be it thought and done:\nThe castle of Macduff I will surprise;\nSeize upon Fife; give to the edge o' the sword\nHis wife, his babes, and all unfortunate souls\nThat trace him in his line.",
+          "paraphrase": "To prove he means it, Macbeth immediately puts this new philosophy into practice: he will attack Macduff's castle, seize his lands, and kill his wife, his children, and everyone connected to his family line. The thought and the decision happen in the same breath.",
+          "notice": "This is the most chilling moment in the soliloquy. Macbeth is not targeting Macduff himself (who has fled to England) but his innocent family. The casual listing — 'his wife, his babes, and all unfortunate souls' — shows how far Macbeth has fallen from the man who once agonized over killing a king."
+        },
+        {
+          "lines": "No boasting like a fool;\nThis deed I'll do before this purpose cool.\nBut no more sights!--Where are these gentlemen?\nCome, bring me where they are.",
+          "paraphrase": "He tells himself: no more empty threats or foolish boasting. He will act before his determination fades. Then he snaps back to the present moment — he has had enough of the witches' visions and wants to leave. He asks to be taken to his messengers.",
+          "notice": "The abrupt shift from murderous resolve to a practical question ('Where are these gentlemen?') is jarring. Macbeth has just ordered the slaughter of a family, and he moves on as if checking an item off a list."
+        }
+      ]
+    }
   },
   {
     "id": "act5scene5",
     "title": "Act 5, Scene 5",
     "label": "\"Tomorrow, and tomorrow, and tomorrow...\"",
     "context": "Upon hearing of Lady Macbeth's death, Macbeth reflects on the meaninglessness of life as his world collapses around him.",
-    "text": "Tomorrow, and tomorrow, and tomorrow,\nCreeps in this petty pace from day to day\nTo the last syllable of recorded time,\nAnd all our yesterdays have lighted fools\nThe way to dusty death. Out, out, brief candle!\nLife's but a walking shadow, a poor player\nThat struts and frets his hour upon the stage\nAnd then is heard no more: it is a tale\nTold by an idiot, full of sound and fury,\nSignifying nothing."
+    "text": "Tomorrow, and tomorrow, and tomorrow,\nCreeps in this petty pace from day to day\nTo the last syllable of recorded time,\nAnd all our yesterdays have lighted fools\nThe way to dusty death. Out, out, brief candle!\nLife's but a walking shadow, a poor player\nThat struts and frets his hour upon the stage\nAnd then is heard no more: it is a tale\nTold by an idiot, full of sound and fury,\nSignifying nothing.",
+    "guide": {
+      "chunks": [
+        {
+          "lines": "Tomorrow, and tomorrow, and tomorrow,\nCreeps in this petty pace from day to day\nTo the last syllable of recorded time,\nAnd all our yesterdays have lighted fools\nThe way to dusty death.",
+          "paraphrase": "Time drags on endlessly, one meaningless day after another, crawling forward until the very end of history. And everything that has already happened — all our past days — has done nothing but light the path for fools walking toward death.",
+          "notice": "The triple repetition of 'tomorrow' creates a heavy, dragging rhythm that makes you feel the monotony Macbeth describes. 'Dusty death' reduces all of human life to dirt and decay."
+        },
+        {
+          "lines": "Out, out, brief candle!\nLife's but a walking shadow, a poor player\nThat struts and frets his hour upon the stage\nAnd then is heard no more:",
+          "paraphrase": "Macbeth commands life to go out, like blowing out a short-lived candle. Life is nothing but a shadow with no substance, or a bad actor who shows off and worries his way through a brief performance on stage and is then completely forgotten.",
+          "notice": "Shakespeare layers three metaphors in rapid succession: life is a candle (brief, easily extinguished), a shadow (insubstantial, not real), and an actor (performing without meaning, then gone). The theater metaphor is especially striking — Shakespeare puts these words in the mouth of an actor, on a stage, playing a character who says life is just a performance."
+        },
+        {
+          "lines": "it is a tale\nTold by an idiot, full of sound and fury,\nSignifying nothing.",
+          "paraphrase": "Life is a story told by a fool — full of noise and passion and intensity, but in the end, it means absolutely nothing.",
+          "notice": "These are among the most famous lines in all of English literature. The word 'signifying' does enormous work: it means 'meaning' or 'pointing to,' and Macbeth's conclusion is that all the drama and suffering of life points to nothing at all. This is Macbeth at his most nihilistic — he has lost everything and can find no meaning in any of it."
+        }
+      ]
+    }
   }
 ]

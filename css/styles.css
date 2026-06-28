@@ -113,6 +113,14 @@ header p {
   border-left: 3px solid #4a9eff;
 }
 
+.guide-chunk {
+  background: #0a1628;
+  border-left: 3px solid #6c5ce7;
+  white-space: pre-wrap;
+  font-size: 0.9rem;
+  max-width: 95%;
+}
+
 .evidence-tip {
   background: #1a2a3e;
   border-left: 3px solid #f0a030;
