@@ -45,18 +45,65 @@ document.addEventListener("DOMContentLoaded", async () => {
     soliloquyButtons.style.display = "none";
   }
 
+  function showClarificationButtons(chunkIndex, excludeIndex) {
+    hideClarificationButtons();
+    const clarifications = chatbot.getClarifications(chunkIndex);
+    const container = document.createElement("div");
+    container.id = "clarification-buttons";
+    container.className = "clarification-buttons";
+
+    clarifications.forEach((clar, i) => {
+      if (i === excludeIndex) return;
+      const btn = document.createElement("button");
+      btn.className = "clarification-btn";
+      btn.textContent = clar.question;
+      btn.addEventListener("click", () => {
+        hideClarificationButtons();
+        handleInput(String(i));
+      });
+      container.appendChild(btn);
+    });
+
+    const continueBtn = document.createElement("button");
+    continueBtn.className = "clarification-btn continue-btn";
+    continueBtn.textContent = "I'm good, continue";
+    continueBtn.addEventListener("click", () => {
+      hideClarificationButtons();
+      handleInput("__continue__");
+    });
+    container.appendChild(continueBtn);
+
+    chatMessages.appendChild(container);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+  }
+
+  function hideClarificationButtons() {
+    const existing = document.getElementById("clarification-buttons");
+    if (existing) existing.remove();
+  }
+
   function handleInput(text) {
     if (!text.trim()) return;
-    addMessage(text, "user");
+    if (text !== "__continue__" && !text.match(/^\d+$/)) {
+      addMessage(text, "user");
+    }
     const responses = chatbot.processInput(text);
+    let lastClarAction = null;
     responses.forEach((r, i) => {
       setTimeout(() => {
-        addMessage(r.text, r.type, r.className);
+        if (r.action === "showClarifications") {
+          lastClarAction = r;
+        } else {
+          addMessage(r.text, r.type, r.className);
+        }
         if (r.action === "reset") {
           setTimeout(startChat, 500);
         }
         if (chatbot.phase === PHASES.COMPLETE && i === responses.length - 1) {
           setTimeout(() => addStartOverButton(), 200);
+        }
+        if (i === responses.length - 1 && lastClarAction) {
+          setTimeout(() => showClarificationButtons(lastClarAction.chunkIndex, lastClarAction.excludeIndex), 100);
         }
       }, i * 400);
     });

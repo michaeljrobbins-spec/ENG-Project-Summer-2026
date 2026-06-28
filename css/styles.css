@@ -268,6 +268,47 @@ header p {
   transform: translateY(-2px);
 }
 
+.clarification-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 8px 0;
+  animation: fadeIn 0.3s ease;
+}
+
+.clarification-btn {
+  background: var(--surface);
+  border: 1px solid #6c5ce7;
+  color: var(--text);
+  padding: 10px 16px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-family: inherit;
+  text-align: left;
+  transition: all 0.2s;
+  flex: 1 1 calc(50% - 8px);
+}
+
+.clarification-btn:hover {
+  border-color: var(--primary-light);
+  background: var(--bot-bg);
+  transform: translateY(-1px);
+}
+
+.clarification-btn.continue-btn {
+  border-color: #4a9eff;
+  background: #1a2a4e;
+  flex: 1 1 100%;
+  text-align: center;
+  font-weight: 600;
+}
+
+.clarification-btn.continue-btn:hover {
+  background: #253a5e;
+  border-color: #6ab4ff;
+}
+
 @media (max-width: 600px) {
   .message { max-width: 95%; }
   .soliloquy-btn { max-width: 100%; }

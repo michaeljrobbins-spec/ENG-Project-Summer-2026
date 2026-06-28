@@ -1,6 +1,7 @@
 const PHASES = {
   SELECT_SOLILOQUY: "select_soliloquy",
   OFFER_GUIDE: "offer_guide",
+  GUIDE_CHUNK: "guide_chunk",
   SHOW_GUIDE: "show_guide",
   LENS_INTRO: "lens_intro",
   LENS_QUESTION: "lens_question",
@@ -28,6 +29,7 @@ class Chatbot {
     this.studentResponses = { personal: [], discursive: [], global: [] };
     this.submittedParagraphs = [];
     this.evaluationResults = [];
+    this.guideChunkIndex = 0;
   }
 
   getWelcomeMessages() {
@@ -43,6 +45,8 @@ class Chatbot {
         return this.handleSoliloquySelection(input);
       case PHASES.OFFER_GUIDE:
         return this.handleGuideOffer(input);
+      case PHASES.GUIDE_CHUNK:
+        return this.handleGuideChunk(input);
       case PHASES.SHOW_GUIDE:
         return this.handleGuideReady(input);
       case PHASES.LENS_QUESTION:
@@ -98,24 +102,12 @@ class Chatbot {
 
     if (yes.some(w => lower.includes(w))) {
       const responses = [];
-      const guide = this.selectedSoliloquy.guide;
-
       responses.push({ text: PROMPTS.guideIntro, type: "bot" });
 
-      guide.chunks.forEach((chunk, i) => {
-        const header = `**Part ${i + 1} of ${guide.chunks.length}:**`;
-        const lines = chunk.lines;
-        const paraphrase = `*In plain language:* ${chunk.paraphrase}`;
-        const notice = `*What to notice:* ${chunk.notice}`;
-        responses.push({
-          text: `${header}\n\n${lines}\n\n${paraphrase}\n\n${notice}`,
-          type: "bot",
-          className: "guide-chunk"
-        });
-      });
-
-      this.phase = PHASES.SHOW_GUIDE;
-      responses.push({ text: PROMPTS.guideReady, type: "bot" });
+      this.guideChunkIndex = 0;
+      this.phase = PHASES.GUIDE_CHUNK;
+      responses.push(this.buildChunkMessage(0));
+      responses.push({ text: "Does anything need clarification?", type: "bot", action: "showClarifications", chunkIndex: 0 });
       return responses;
     }
 
@@ -124,6 +116,51 @@ class Chatbot {
     }
 
     return [{ text: "Just type **yes** if you'd like help understanding the passage, or **no** to jump straight into the analysis.", type: "bot" }];
+  }
+
+  buildChunkMessage(index) {
+    const chunks = this.selectedSoliloquy.guide.chunks;
+    const chunk = chunks[index];
+    const header = `**Part ${index + 1} of ${chunks.length}:**`;
+    const paraphrase = `*In plain language:* ${chunk.paraphrase}`;
+    const notice = `*What to notice:* ${chunk.notice}`;
+    return {
+      text: `${header}\n\n${chunk.lines}\n\n${paraphrase}\n\n${notice}`,
+      type: "bot",
+      className: "guide-chunk"
+    };
+  }
+
+  getClarifications(chunkIndex) {
+    const chunk = this.selectedSoliloquy.guide.chunks[chunkIndex];
+    return chunk.clarifications || [];
+  }
+
+  handleGuideChunk(input) {
+    const chunks = this.selectedSoliloquy.guide.chunks;
+    const clarifications = this.getClarifications(this.guideChunkIndex);
+
+    const clarIdx = parseInt(input);
+    if (!isNaN(clarIdx) && clarIdx >= 0 && clarIdx < clarifications.length) {
+      const clar = clarifications[clarIdx];
+      const responses = [{ text: `**${clar.question}**\n\n${clar.answer}`, type: "bot", className: "guide-chunk" }];
+      responses.push({ text: "Anything else about this section?", type: "bot", action: "showClarifications", chunkIndex: this.guideChunkIndex, excludeIndex: clarIdx });
+      return responses;
+    }
+
+    if (input === "__continue__" || input.toLowerCase().includes("continue") || input.toLowerCase().includes("good") || input.toLowerCase().includes("next") || input.toLowerCase().includes("no")) {
+      this.guideChunkIndex++;
+      if (this.guideChunkIndex < chunks.length) {
+        const responses = [this.buildChunkMessage(this.guideChunkIndex)];
+        responses.push({ text: "Does anything need clarification?", type: "bot", action: "showClarifications", chunkIndex: this.guideChunkIndex });
+        return responses;
+      } else {
+        this.phase = PHASES.SHOW_GUIDE;
+        return [{ text: PROMPTS.guideReady, type: "bot" }];
+      }
+    }
+
+    return [{ text: "Use the buttons below to ask a question or continue to the next section.", type: "bot", action: "showClarifications", chunkIndex: this.guideChunkIndex }];
   }
 
   handleGuideReady(input) {

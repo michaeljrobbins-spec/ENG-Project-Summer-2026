@@ -10,27 +10,97 @@
         {
           "lines": "If it were done when 'tis done, then 'twere well\nIt were done quickly: if the assassination\nCould trammel up the consequence, and catch\nWith his surcease success; that but this blow\nMight be the be-all and the end-all here,\nBut here, upon this bank and shoal of time,\nWe'ld jump the life to come.",
           "paraphrase": "If murdering Duncan could be done without any consequences — if this one act could end the matter completely, right here and now — then it would be best to do it quickly. Macbeth wishes he could skip past any punishment in the afterlife.",
-          "notice": "Notice how tangled the language is in these opening lines. Macbeth can barely get the words out — the twisted syntax mirrors a mind trying to talk itself into something terrible."
+          "notice": "Notice how tangled the language is in these opening lines. Macbeth can barely get the words out — the twisted syntax mirrors a mind trying to talk itself into something terrible.",
+          "clarifications": [
+            {
+              "question": "What does 'trammel up the consequence' mean?",
+              "answer": "'Trammel' means to catch in a net, like trapping a fish. Macbeth is wishing he could catch and contain all the consequences of the murder — wrap them up neatly so nothing escapes. He wants the act to have zero fallout."
+            },
+            {
+              "question": "What is the 'bank and shoal of time'?",
+              "answer": "Macbeth pictures life as a shallow sandbar ('shoal') in an ocean of eternity. We are standing on this brief strip of time between birth and death. He is saying: if there were no afterlife to worry about, he would risk everything right now on this narrow ledge of mortal life."
+            },
+            {
+              "question": "Why is the language so confusing here?",
+              "answer": "That is intentional. Shakespeare makes the syntax twist and turn because Macbeth's mind is doing the same thing. He cannot state his plan plainly — he avoids the word 'murder' entirely — because he is still trying to rationalize something he knows is wrong. The difficulty of the language IS the point."
+            }
+          ]
         },
         {
           "lines": "But in these cases\nWe still have judgment here; that we but teach\nBloody instructions, which, being taught, return\nTo plague the inventor: this even-handed justice\nCommends the ingredients of our poison'd chalice\nTo our own lips.",
           "paraphrase": "But there are always consequences in this life. When you teach others that violence is acceptable, that lesson comes back to haunt you. Justice is fair — if you poison someone, you end up drinking from the same cup.",
-          "notice": "The metaphor of the 'poison'd chalice' is central: Macbeth recognizes that violence is a cup you prepare for others but end up drinking yourself."
+          "notice": "The metaphor of the 'poison'd chalice' is central: Macbeth recognizes that violence is a cup you prepare for others but end up drinking yourself.",
+          "clarifications": [
+            {
+              "question": "What are 'bloody instructions'?",
+              "answer": "Macbeth means that when a powerful person commits murder, it teaches everyone around them that murder is an acceptable way to get what you want. Those 'lessons' eventually come back to destroy the teacher. He is essentially predicting his own downfall — if he kills the king, someone will eventually kill him the same way."
+            },
+            {
+              "question": "What is the 'poison'd chalice'?",
+              "answer": "A chalice is a ceremonial cup, like a goblet. Macbeth imagines preparing a poisoned drink for someone else, only to have justice hand it back to him. The image captures a universal idea: the harm you plan for others has a way of returning to you. It is Shakespeare's version of 'what goes around comes around.'"
+            },
+            {
+              "question": "What does 'even-handed justice' mean?",
+              "answer": "It means justice that is perfectly fair and balanced — it treats everyone equally. Macbeth recognizes that the universe has a moral balance: if you commit a crime, the consequences will find you. He is acknowledging this truth even as he considers ignoring it."
+            }
+          ]
         },
         {
           "lines": "He's here in double trust;\nFirst, as I am his kinsman and his subject,\nStrong both against the deed; then, as his host,\nWho should against his murderer shut the door,\nNot bear the knife myself.",
           "paraphrase": "Duncan trusts Macbeth doubly: first, because Macbeth is his relative and his loyal subject; second, because Macbeth is his host. A host is supposed to protect guests from harm, not be the one holding the knife.",
-          "notice": "Macbeth lists the reasons he should NOT kill Duncan — and every reason is about duty and trust. He knows exactly what he is betraying."
+          "notice": "Macbeth lists the reasons he should NOT kill Duncan — and every reason is about duty and trust. He knows exactly what he is betraying.",
+          "clarifications": [
+            {
+              "question": "What does 'double trust' mean?",
+              "answer": "Duncan trusts Macbeth for two separate reasons, each of which should prevent the murder. First, Macbeth is Duncan's kinsman (relative) and subject (a lord who has sworn loyalty to the king). Second, Macbeth is Duncan's host — Duncan is sleeping in Macbeth's castle as an honored guest. Both relationships carry sacred obligations that Macbeth would be violating."
+            },
+            {
+              "question": "Why does Macbeth list reasons NOT to do it?",
+              "answer": "This is the heart of the soliloquy's dramatic tension. Macbeth is not a thoughtless villain — he is a man with a functioning conscience who can see clearly that what he is about to do is wrong on every level. The fact that he goes through with it anyway is what makes the play a tragedy."
+            },
+            {
+              "question": "What does 'bear the knife' mean?",
+              "answer": "To 'bear the knife' means to carry the murder weapon. Macbeth says he should be shutting the door against anyone who might harm Duncan, not carrying the weapon himself. The image is striking: the protector becoming the attacker, the door-guarder becoming the intruder."
+            }
+          ]
         },
         {
           "lines": "Besides, this Duncan\nHath borne his faculties so meek, hath been\nSo clear in his great office, that his virtues\nWill plead like angels, trumpet-tongued, against\nThe deep damnation of his taking-off;\nAnd pity, like a naked new-born babe,\nStriding the blast, or heaven's cherubin, horsed\nUpon the sightless couriers of the air,\nShall blow the horrid deed in every eye,\nThat tears shall drown the wind.",
           "paraphrase": "On top of all that, Duncan has been a good and humble king. His goodness is so powerful that if he were murdered, his virtues would cry out like angels against the crime. Pity itself — imagined as a helpless newborn baby or angels riding the wind — would expose the horrible deed to everyone, and the whole world would weep.",
-          "notice": "The imagery explodes here: angels, a newborn baby, heavenly riders on the wind. Macbeth's imagination makes Duncan's goodness feel cosmic and overwhelming — which makes the planned murder feel even more monstrous."
+          "notice": "The imagery explodes here: angels, a newborn baby, heavenly riders on the wind. Macbeth's imagination makes Duncan's goodness feel cosmic and overwhelming — which makes the planned murder feel even more monstrous.",
+          "clarifications": [
+            {
+              "question": "What does 'borne his faculties so meek' mean?",
+              "answer": "It means Duncan has used his royal powers ('faculties') with gentleness and humility ('meek'). He has been a kind, fair king — not a tyrant. This makes the murder even harder to justify, because Macbeth cannot even claim he is overthrowing a bad ruler."
+            },
+            {
+              "question": "Why is pity described as a 'naked new-born babe'?",
+              "answer": "This is one of Shakespeare's most powerful images. Pity is imagined as the most vulnerable, innocent thing possible — a naked newborn — yet it has the strength to stride across a storm and expose the crime to the entire world. The paradox is the point: innocence and compassion are more powerful than violence and ambition."
+            },
+            {
+              "question": "What are 'sightless couriers of the air'?",
+              "answer": "'Sightless couriers' means invisible messengers — the winds. Macbeth imagines angelic figures ('heaven's cherubin') riding the winds like horses, spreading news of the murder everywhere. The image suggests that nothing can be hidden: even the air itself will carry the truth of what he has done."
+            }
+          ]
         },
         {
           "lines": "I have no spur\nTo prick the sides of my intent, but only\nVaulting ambition, which o'erleaps itself\nAnd falls on the other.",
           "paraphrase": "Macbeth admits he has no good reason to do this — no justification at all — except his own ambition. And that ambition is like a rider who jumps too eagerly onto a horse and falls off the other side.",
-          "notice": "This is the conclusion Macbeth reaches: ambition is his only motive, and it is self-defeating. The image of overleaping and falling foreshadows his eventual downfall."
+          "notice": "This is the conclusion Macbeth reaches: ambition is his only motive, and it is self-defeating. The image of overleaping and falling foreshadows his eventual downfall.",
+          "clarifications": [
+            {
+              "question": "What is a 'spur' in this context?",
+              "answer": "A spur is a pointed device worn on a rider's boot, used to kick a horse into going faster. Macbeth is using a horseback-riding metaphor: he has no 'spur' — no legitimate motivation — to drive his 'intent' (his plan to murder Duncan) forward. The only thing pushing him is raw ambition."
+            },
+            {
+              "question": "What does 'vaulting ambition' mean?",
+              "answer": "'Vaulting' means leaping or jumping with great force. Macbeth compares his ambition to a rider who tries to vault onto a horse but jumps too hard and tumbles over the other side. It is a self-aware admission: his ambition is excessive, and it will cause him to overreach and fall. He is predicting his own destruction."
+            },
+            {
+              "question": "Does Macbeth decide not to do it here?",
+              "answer": "In this moment, yes — he talks himself out of it. He concludes that ambition alone is not enough justification. But the soliloquy is immediately followed by Lady Macbeth's entrance, where she challenges his manhood and persuades him to go through with the murder. The fact that he reached the right conclusion and then abandoned it is part of the tragedy."
+            }
+          ]
         }
       ]
     }
@@ -46,22 +116,78 @@
         {
           "lines": "Is this a dagger which I see before me,\nThe handle toward my hand? Come, let me clutch thee.\nI have thee not, and yet I see thee still.\nArt thou not, fatal vision, sensible\nTo feeling as to sight? or art thou but\nA dagger of the mind, a false creation,\nProceeding from the heat-oppressed brain?",
           "paraphrase": "Macbeth sees a dagger floating in the air, handle pointing toward him as if inviting him to grab it. He reaches for it but cannot touch it — yet he can still see it. He asks: are you real, something I can feel as well as see? Or are you just a hallucination, something my stressed and feverish mind has invented?",
-          "notice": "Macbeth immediately questions his own perception. The phrase 'heat-oppressed brain' tells us he knows something is wrong with his mind, but he cannot stop seeing the dagger."
+          "notice": "Macbeth immediately questions his own perception. The phrase 'heat-oppressed brain' tells us he knows something is wrong with his mind, but he cannot stop seeing the dagger.",
+          "clarifications": [
+            {
+              "question": "What does 'sensible to feeling' mean?",
+              "answer": "'Sensible' here means 'able to be perceived by the senses.' Macbeth is asking whether this dagger can be felt (touched) as well as seen. He can see it clearly, but when he reaches out, his hand passes through it. This gap between sight and touch is what makes him question whether it is real."
+            },
+            {
+              "question": "Is the dagger real or imagined?",
+              "answer": "Shakespeare deliberately leaves this ambiguous. Macbeth himself does not know — that is the whole point of the speech. It could be a guilt-driven hallucination from his 'heat-oppressed brain,' or it could be a supernatural vision (like the witches' prophecies). The uncertainty mirrors Macbeth's mental state: he is no longer sure what is real."
+            },
+            {
+              "question": "What is a 'heat-oppressed brain'?",
+              "answer": "It means a brain that is overheated, feverish, overwhelmed with stress. Macbeth suspects his own mind is creating false images because it is under so much pressure. Today we might say he is having a stress-induced hallucination or a breakdown."
+            }
+          ]
         },
         {
           "lines": "I see thee yet, in form as palpable\nAs this which now I draw.\nThou marshall'st me the way that I was going;\nAnd such an instrument I was to use.\nMine eyes are made the fools o' the other senses,\nOr else worth all the rest; I see thee still,\nAnd on thy blade and dudgeon gouts of blood,\nWhich was not so before.",
           "paraphrase": "The vision looks as solid and real as the actual dagger Macbeth now draws from his belt. The phantom dagger seems to lead him toward Duncan's room — exactly where he was already headed, using exactly the kind of weapon he planned to use. Either his eyes are being tricked while his other senses know the truth, or his eyes are seeing something the rest of him cannot. Then the hallucination worsens: he sees drops of blood appear on the blade and handle.",
-          "notice": "The dagger is 'marshalling' him — leading him like a guide. Macbeth is watching himself being pulled toward murder, as though some external force is directing him. The blood appearing on the blade marks the hallucination intensifying."
+          "notice": "The dagger is 'marshalling' him — leading him like a guide. Macbeth is watching himself being pulled toward murder, as though some external force is directing him. The blood appearing on the blade marks the hallucination intensifying.",
+          "clarifications": [
+            {
+              "question": "What does 'marshall'st me' mean?",
+              "answer": "'Marshall' means to guide or lead the way, like a marshal leading a procession. The phantom dagger is floating ahead of Macbeth, pointing toward Duncan's chamber, as if showing him the path. It is eerie because Macbeth was already going that direction — the hallucination mirrors his own intention."
+            },
+            {
+              "question": "What are 'gouts of blood'?",
+              "answer": "'Gouts' are large drops or clots. Macbeth sees thick drops of blood appear on the phantom dagger's blade and 'dudgeon' (handle). This was not there before — the hallucination is changing, becoming more violent. The blood foreshadows what is about to happen and suggests Macbeth's guilt is already taking physical form in his mind."
+            },
+            {
+              "question": "What does the line about eyes and senses mean?",
+              "answer": "Macbeth is debating with himself: either his eyes are being 'made fools' (deceived, tricked) while his other senses correctly tell him nothing is there, OR his eyes are 'worth all the rest' — seeing a truth that touch, hearing, and smell cannot access. He cannot decide which explanation is more frightening."
+            }
+          ]
         },
         {
           "lines": "There's no such thing:\nIt is the bloody business which informs\nThus to mine eyes. Now o'er the one halfworld\nNature seems dead, and wicked dreams abuse\nThe curtain'd sleep; witchcraft celebrates\nPale Hecate's offerings, and wither'd murder,\nAlarum'd by his sentinel, the wolf,\nWhose howl's his watch, thus with his stealthy pace,\nWith Tarquin's ravishing strides, towards his design\nMoves like a ghost.",
           "paraphrase": "Macbeth snaps out of it: the dagger is not real. It is the horrific act he is about to commit that is projecting images onto his eyes. He then describes the nighttime world around him: nature itself seems dead, nightmares torment sleepers, witchcraft is at work, and murder — personified as a withered old figure, alerted by the howl of a wolf — creeps forward like a ghost toward its victim, moving with the same terrible purpose as Tarquin (a Roman king infamous for committing a rape).",
-          "notice": "Macbeth shifts from questioning his own sanity to describing the entire world as a landscape of evil. The reference to Tarquin connects Macbeth's crime to a notorious act of violation from classical history."
+          "notice": "Macbeth shifts from questioning his own sanity to describing the entire world as a landscape of evil. The reference to Tarquin connects Macbeth's crime to a notorious act of violation from classical history.",
+          "clarifications": [
+            {
+              "question": "Who is Tarquin?",
+              "answer": "Tarquin (Sextus Tarquinius) was a prince in ancient Rome who is infamous for the rape of Lucretia, a noblewoman. By comparing his own stealthy approach to Tarquin's 'ravishing strides,' Macbeth connects his crime to one of the most notorious acts of violation in classical literature. It reveals that Macbeth understands the gravity of what he is doing — this is not just murder, it is a violation of sacred trust."
+            },
+            {
+              "question": "Who is Hecate?",
+              "answer": "Hecate is the goddess of witchcraft, the moon, and crossroads in Greek mythology. She also appears as a character later in Macbeth. Here, Macbeth imagines the night as a time when witchcraft 'celebrates' — makes offerings to Hecate. He is describing a world where dark supernatural forces are active and in control, as if the universe itself is aligned with evil at this moment."
+            },
+            {
+              "question": "Why is murder described as a person?",
+              "answer": "Shakespeare personifies murder as 'wither'd murder' — a dried-up, skeletal figure that creeps through the night like a ghost, alerted by the wolf's howl like a sentinel's alarm. This makes murder feel like an independent force, almost separate from Macbeth, moving through the world with its own purpose. It subtly allows Macbeth to distance himself from the act — as if Murder itself is doing this, not him."
+            }
+          ]
         },
         {
           "lines": "Thou sure and firm-set earth,\nHear not my steps, which way they walk, for fear\nThy very stones prate of my whereabout,\nAnd take the present horror from the time,\nWhich now suits with it. Whiles I threat, he lives:\nWords to the heat of deeds too cold breath gives.\nI go, and it is done; the bell invites me.\nHear it not, Duncan; for it is a knell\nThat summons thee to heaven or to hell.",
           "paraphrase": "Macbeth asks the ground not to listen to his footsteps, afraid that even the stones will reveal where he is going. He tells himself to stop talking — while he stands here making threats, Duncan is still alive. Words cool down the heat of action. Then a bell rings, and Macbeth takes it as his signal. He tells Duncan not to hear it, because it is a death bell — summoning Duncan either to heaven or to hell.",
-          "notice": "The final couplet ('Whiles I threat, he lives: / Words to the heat of deeds too cold breath gives') is the turning point. Macbeth recognizes that talking is a form of hesitation, and he forces himself to act. The bell transforms from a household sound into a funeral knell."
+          "notice": "The final couplet ('Whiles I threat, he lives: / Words to the heat of deeds too cold breath gives') is the turning point. Macbeth recognizes that talking is a form of hesitation, and he forces himself to act. The bell transforms from a household sound into a funeral knell.",
+          "clarifications": [
+            {
+              "question": "What does 'prate of my whereabout' mean?",
+              "answer": "'Prate' means to chatter or gossip. Macbeth is so paranoid that he imagines the very stones of the floor tattling on him, revealing his location as he creeps toward Duncan's room. It shows how acute his fear and guilt are — even inanimate objects feel like witnesses."
+            },
+            {
+              "question": "What is a knell?",
+              "answer": "A knell is the slow, solemn ringing of a bell, traditionally used to announce a death or a funeral. When Macbeth hears the bell (which Lady Macbeth is ringing as the agreed-upon signal), he reinterprets it as a death knell — a funeral bell for Duncan. The word transforms an ordinary sound into something final and ominous."
+            },
+            {
+              "question": "Why does he say 'heaven or to hell'?",
+              "answer": "This is a moment of grim ambiguity. Macbeth addresses Duncan directly — 'Hear it not, Duncan' — almost tenderly. The phrase 'heaven or to hell' acknowledges that the afterlife is real (contradicting his earlier wish to 'jump the life to come' in the Act 1 soliloquy). But the 'or' is also chilling: Macbeth does not presume to know Duncan's spiritual fate, even as he is about to determine his physical one."
+            }
+          ]
         }
       ]
     }
@@ -77,17 +203,59 @@
         {
           "lines": "Time, thou anticipatest my dread exploits:\nThe flighty purpose never is o'ertook\nUnless the deed go with it; from this moment\nThe very firstlings of my heart shall be\nThe firstlings of my hand.",
           "paraphrase": "Macbeth complains that time keeps getting ahead of him — his plans expire before he can carry them out. He has learned a lesson: if you want to accomplish something terrible, you must act the instant you think of it. From now on, the very first impulse of his heart will immediately become action.",
-          "notice": "Compare this to Act 1, Scene 7, where Macbeth agonized over every reason not to act. Here, he has eliminated all deliberation. The word 'firstlings' (meaning first-born, earliest impulses) appears twice — thought and action are now fused into one."
+          "notice": "Compare this to Act 1, Scene 7, where Macbeth agonized over every reason not to act. Here, he has eliminated all deliberation. The word 'firstlings' (meaning first-born, earliest impulses) appears twice — thought and action are now fused into one.",
+          "clarifications": [
+            {
+              "question": "What does 'anticipatest my dread exploits' mean?",
+              "answer": "Macbeth is addressing Time directly, complaining that it runs ahead of ('anticipates') his terrible plans ('dread exploits'). In other words, by the time he gets around to acting, the moment has passed. He has learned from past hesitation that delay is his enemy."
+            },
+            {
+              "question": "What are 'firstlings'?",
+              "answer": "'Firstlings' literally means the first-born offspring, but here Macbeth uses it metaphorically. The 'firstlings of my heart' are his very first impulses and thoughts. The 'firstlings of my hand' are his very first actions. He is vowing that from now on, there will be no gap between feeling and doing — the moment he thinks something, he will act on it."
+            },
+            {
+              "question": "How is this different from his earlier soliloquies?",
+              "answer": "This is a dramatic transformation. In Act 1, Macbeth spent an entire soliloquy carefully weighing reasons for and against killing Duncan. In Act 2, he was tormented by hallucinations and doubt. Now in Act 4, he has abolished all moral reasoning. He no longer debates whether something is right — he simply does it. This is Macbeth at his most dangerous."
+            }
+          ]
         },
         {
           "lines": "And even now,\nTo crown my thoughts with acts, be it thought and done:\nThe castle of Macduff I will surprise;\nSeize upon Fife; give to the edge o' the sword\nHis wife, his babes, and all unfortunate souls\nThat trace him in his line.",
           "paraphrase": "To prove he means it, Macbeth immediately puts this new philosophy into practice: he will attack Macduff's castle, seize his lands, and kill his wife, his children, and everyone connected to his family line. The thought and the decision happen in the same breath.",
-          "notice": "This is the most chilling moment in the soliloquy. Macbeth is not targeting Macduff himself (who has fled to England) but his innocent family. The casual listing — 'his wife, his babes, and all unfortunate souls' — shows how far Macbeth has fallen from the man who once agonized over killing a king."
+          "notice": "This is the most chilling moment in the soliloquy. Macbeth is not targeting Macduff himself (who has fled to England) but his innocent family. The casual listing — 'his wife, his babes, and all unfortunate souls' — shows how far Macbeth has fallen from the man who once agonized over killing a king.",
+          "clarifications": [
+            {
+              "question": "Why does he target Macduff's family?",
+              "answer": "Macduff himself has fled to England to join Malcolm's rebellion against Macbeth. Since Macbeth cannot reach Macduff directly, he decides to destroy everything Macduff left behind — his wife, his children, his entire household. It is an act of pure vengeance and intimidation, targeting innocents because he cannot reach his actual enemy."
+            },
+            {
+              "question": "What does 'give to the edge o' the sword' mean?",
+              "answer": "It means to kill by the sword — to put them to the sword's edge. It is a brutal, military phrase that reduces the murder of women and children to a tactical action. The cold, efficient language is part of what makes these lines so disturbing."
+            },
+            {
+              "question": "What does 'trace him in his line' mean?",
+              "answer": "'Trace him in his line' means anyone who follows in Macduff's family line — his descendants and relatives. Macbeth is not just targeting Macduff's immediate family but anyone connected to him by blood. He wants to erase Macduff's entire lineage."
+            }
+          ]
         },
         {
           "lines": "No boasting like a fool;\nThis deed I'll do before this purpose cool.\nBut no more sights!--Where are these gentlemen?\nCome, bring me where they are.",
           "paraphrase": "He tells himself: no more empty threats or foolish boasting. He will act before his determination fades. Then he snaps back to the present moment — he has had enough of the witches' visions and wants to leave. He asks to be taken to his messengers.",
-          "notice": "The abrupt shift from murderous resolve to a practical question ('Where are these gentlemen?') is jarring. Macbeth has just ordered the slaughter of a family, and he moves on as if checking an item off a list."
+          "notice": "The abrupt shift from murderous resolve to a practical question ('Where are these gentlemen?') is jarring. Macbeth has just ordered the slaughter of a family, and he moves on as if checking an item off a list.",
+          "clarifications": [
+            {
+              "question": "What does 'before this purpose cool' mean?",
+              "answer": "Macbeth knows from experience that determination fades over time — purposes 'cool' like heated metal. In Act 1, he talked himself out of murdering Duncan before Lady Macbeth pushed him back. Now he has learned to act before that cooling can happen. It is a self-aware acknowledgment of his own tendency to hesitate."
+            },
+            {
+              "question": "What 'sights' is he referring to?",
+              "answer": "The 'sights' are the witches' apparitions and visions he has just witnessed — including a procession of eight kings descending from Banquo, which showed him that Banquo's line will rule Scotland, not his own. 'No more sights!' is Macbeth desperately wanting to stop seeing these disturbing supernatural visions."
+            },
+            {
+              "question": "Why is the casual tone at the end significant?",
+              "answer": "The sudden pivot to 'Where are these gentlemen?' after ordering the massacre of an entire family shows that Macbeth has become someone who can plan atrocities and then move on to logistics without a pause. Earlier in the play, even the thought of murder tormented him. Now it is just business. The tonal shift IS the character development."
+            }
+          ]
         }
       ]
     }
@@ -103,17 +271,59 @@
         {
           "lines": "Tomorrow, and tomorrow, and tomorrow,\nCreeps in this petty pace from day to day\nTo the last syllable of recorded time,\nAnd all our yesterdays have lighted fools\nThe way to dusty death.",
           "paraphrase": "Time drags on endlessly, one meaningless day after another, crawling forward until the very end of history. And everything that has already happened — all our past days — has done nothing but light the path for fools walking toward death.",
-          "notice": "The triple repetition of 'tomorrow' creates a heavy, dragging rhythm that makes you feel the monotony Macbeth describes. 'Dusty death' reduces all of human life to dirt and decay."
+          "notice": "The triple repetition of 'tomorrow' creates a heavy, dragging rhythm that makes you feel the monotony Macbeth describes. 'Dusty death' reduces all of human life to dirt and decay.",
+          "clarifications": [
+            {
+              "question": "What does 'petty pace' mean?",
+              "answer": "'Petty' means small, insignificant, trivial. 'Pace' means speed or rate of movement. Together, 'petty pace' describes time moving forward in tiny, meaningless steps — each day is so small and insignificant that the crawl of time feels unbearable. The slow rhythm of the line ('creeps in this petty pace') makes you experience that tedium."
+            },
+            {
+              "question": "What is 'the last syllable of recorded time'?",
+              "answer": "Macbeth imagines all of history as a text being read aloud, syllable by syllable. The 'last syllable' is the final moment of recorded time — the end of the world. He is saying that this meaningless parade of tomorrows stretches all the way to the end of everything. Time itself is just a long, pointless recitation."
+            },
+            {
+              "question": "What does 'lighted fools the way to dusty death' mean?",
+              "answer": "Imagine someone holding a candle to light a dark path. All of our past days ('yesterdays') have been like that candle — but the path they lit only leads to death ('dusty death'). And the people walking that path are 'fools' because they did not realize where it was leading. Macbeth is saying that everything we have ever done was just guiding us toward the grave."
+            }
+          ]
         },
         {
           "lines": "Out, out, brief candle!\nLife's but a walking shadow, a poor player\nThat struts and frets his hour upon the stage\nAnd then is heard no more:",
           "paraphrase": "Macbeth commands life to go out, like blowing out a short-lived candle. Life is nothing but a shadow with no substance, or a bad actor who shows off and worries his way through a brief performance on stage and is then completely forgotten.",
-          "notice": "Shakespeare layers three metaphors in rapid succession: life is a candle (brief, easily extinguished), a shadow (insubstantial, not real), and an actor (performing without meaning, then gone). The theater metaphor is especially striking — Shakespeare puts these words in the mouth of an actor, on a stage, playing a character who says life is just a performance."
+          "notice": "Shakespeare layers three metaphors in rapid succession: life is a candle (brief, easily extinguished), a shadow (insubstantial, not real), and an actor (performing without meaning, then gone). The theater metaphor is especially striking — Shakespeare puts these words in the mouth of an actor, on a stage, playing a character who says life is just a performance.",
+          "clarifications": [
+            {
+              "question": "Who is the 'brief candle'?",
+              "answer": "The 'brief candle' represents life itself — or more specifically, the spark of life, consciousness, the thing that makes us alive. Macbeth is commanding it to go out, as if he is so exhausted by existence that he wants the light of life to be extinguished. 'Brief' emphasizes how short-lived it is — a candle that barely lasts before it burns out."
+            },
+            {
+              "question": "What does 'struts and frets' mean?",
+              "answer": "'Struts' means to walk around with exaggerated pride and self-importance. 'Frets' means to worry, to be anxious. Together, they describe a bad actor who alternates between showing off and panicking — full of big gestures and nervous energy, but ultimately meaningless. Macbeth is saying this is all human life amounts to: a brief performance of pride and worry on a stage nobody is really watching."
+            },
+            {
+              "question": "What is the 'walking shadow'?",
+              "answer": "A shadow follows you but has no substance — you cannot touch it, it has no independent existence, it is just a dark outline of something real. By calling life a 'walking shadow,' Macbeth suggests that we are not real beings with real purpose — we are just outlines, imitations of something meaningful, moving through the world without substance."
+            }
+          ]
         },
         {
           "lines": "it is a tale\nTold by an idiot, full of sound and fury,\nSignifying nothing.",
           "paraphrase": "Life is a story told by a fool — full of noise and passion and intensity, but in the end, it means absolutely nothing.",
-          "notice": "These are among the most famous lines in all of English literature. The word 'signifying' does enormous work: it means 'meaning' or 'pointing to,' and Macbeth's conclusion is that all the drama and suffering of life points to nothing at all. This is Macbeth at his most nihilistic — he has lost everything and can find no meaning in any of it."
+          "notice": "These are among the most famous lines in all of English literature. The word 'signifying' does enormous work: it means 'meaning' or 'pointing to,' and Macbeth's conclusion is that all the drama and suffering of life points to nothing at all. This is Macbeth at his most nihilistic — he has lost everything and can find no meaning in any of it.",
+          "clarifications": [
+            {
+              "question": "What does 'signifying nothing' mean?",
+              "answer": "'Signify' means to mean, to represent, to point toward something meaningful. When Macbeth says life is 'signifying nothing,' he is making the bleakest possible philosophical claim: that all of human experience — all the passion, all the suffering, all the drama — adds up to zero meaning. It does not point to anything. It is the ultimate nihilistic statement."
+            },
+            {
+              "question": "Who is the 'idiot' telling the tale?",
+              "answer": "The 'idiot' could be God, fate, the universe, or simply the blind forces of chance — whatever entity is 'authoring' the story of human existence. Macbeth is saying that the author of life's story is a fool, and the story itself is incoherent: loud and dramatic but ultimately meaningless. It is a radical rejection of the idea that life has any design or purpose behind it."
+            },
+            {
+              "question": "What does Macbeth feel at this moment?",
+              "answer": "Macbeth has just learned that Lady Macbeth is dead — the one person who shared his ambition and his guilt. His army is surrounded, his allies have abandoned him, and the witches' prophecies are closing in. This speech is not philosophical reflection from a calm thinker — it is the raw, exhausted conclusion of a man who has destroyed everything he cared about and has nothing left. He is not just sad; he is beyond sadness, in a place where even sadness feels pointless."
+            }
+          ]
         }
       ]
     }
