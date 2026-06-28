@@ -106,7 +106,7 @@ class Chatbot {
 
       this.guideChunkIndex = 0;
       this.phase = PHASES.GUIDE_CHUNK;
-      responses.push(this.buildChunkMessage(0));
+      responses.push(...this.buildChunkMessages(0));
       responses.push({ text: "Does anything need clarification?", type: "bot", action: "showClarifications", chunkIndex: 0 });
       return responses;
     }
@@ -118,17 +118,22 @@ class Chatbot {
     return [{ text: "Just type **yes** if you'd like help understanding the passage, or **no** to jump straight into the analysis.", type: "bot" }];
   }
 
-  buildChunkMessage(index) {
+  buildChunkMessages(index) {
     const chunks = this.selectedSoliloquy.guide.chunks;
     const chunk = chunks[index];
     const header = `**Part ${index + 1} of ${chunks.length}:**`;
-    const paraphrase = `*In plain language:* ${chunk.paraphrase}`;
-    const notice = `*What to notice:* ${chunk.notice}`;
-    return {
-      text: `${header}\n\n${chunk.lines}\n\n${paraphrase}\n\n${notice}`,
-      type: "bot",
-      className: "guide-chunk"
-    };
+    return [
+      {
+        text: `${header}\n\n${chunk.lines}`,
+        type: "bot",
+        className: "guide-original"
+      },
+      {
+        text: `*In plain language:* ${chunk.paraphrase}\n\n*What to notice:* ${chunk.notice}`,
+        type: "bot",
+        className: "guide-explanation"
+      }
+    ];
   }
 
   getClarifications(chunkIndex) {
@@ -143,7 +148,7 @@ class Chatbot {
     const clarIdx = parseInt(input);
     if (!isNaN(clarIdx) && clarIdx >= 0 && clarIdx < clarifications.length) {
       const clar = clarifications[clarIdx];
-      const responses = [{ text: `**${clar.question}**\n\n${clar.answer}`, type: "bot", className: "guide-chunk" }];
+      const responses = [{ text: `**${clar.question}**\n\n${clar.answer}`, type: "bot", className: "guide-clarification" }];
       responses.push({ text: "Anything else about this section?", type: "bot", action: "showClarifications", chunkIndex: this.guideChunkIndex, excludeIndex: clarIdx });
       return responses;
     }
@@ -151,7 +156,7 @@ class Chatbot {
     if (input === "__continue__" || input.toLowerCase().includes("continue") || input.toLowerCase().includes("good") || input.toLowerCase().includes("next") || input.toLowerCase().includes("no")) {
       this.guideChunkIndex++;
       if (this.guideChunkIndex < chunks.length) {
-        const responses = [this.buildChunkMessage(this.guideChunkIndex)];
+        const responses = [...this.buildChunkMessages(this.guideChunkIndex)];
         responses.push({ text: "Does anything need clarification?", type: "bot", action: "showClarifications", chunkIndex: this.guideChunkIndex });
         return responses;
       } else {

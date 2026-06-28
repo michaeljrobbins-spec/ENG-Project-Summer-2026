@@ -113,10 +113,26 @@ header p {
   border-left: 3px solid #4a9eff;
 }
 
-.guide-chunk {
-  background: #0a1628;
-  border-left: 3px solid #6c5ce7;
+.guide-original {
+  background: #0d1a30;
+  border-left: 3px solid var(--primary);
+  font-family: "Georgia", serif;
+  font-style: italic;
   white-space: pre-wrap;
+  font-size: 0.9rem;
+  max-width: 95%;
+}
+
+.guide-explanation {
+  background: #0f2440;
+  border-left: 3px solid #6c5ce7;
+  font-size: 0.9rem;
+  max-width: 95%;
+}
+
+.guide-clarification {
+  background: #1a1a3a;
+  border-left: 3px solid #f0a030;
   font-size: 0.9rem;
   max-width: 95%;
 }
