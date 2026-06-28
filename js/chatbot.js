@@ -90,7 +90,7 @@ class Chatbot {
     });
 
     this.phase = PHASES.OFFER_GUIDE;
-    responses.push({ text: PROMPTS.guideOffer, type: "bot" });
+    responses.push({ text: PROMPTS.guideOffer, type: "bot", action: "showGuideOffer" });
 
     return responses;
   }
@@ -115,7 +115,7 @@ class Chatbot {
       return this.beginLensQuestions();
     }
 
-    return [{ text: "Just type **yes** if you'd like help understanding the passage, or **no** to jump straight into the analysis.", type: "bot" }];
+    return [{ text: "Please use the buttons above to choose.", type: "bot", action: "showGuideOffer" }];
   }
 
   buildChunkMessages(index) {

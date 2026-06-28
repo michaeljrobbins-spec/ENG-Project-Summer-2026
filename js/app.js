@@ -82,6 +82,39 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (existing) existing.remove();
   }
 
+  function showGuideOfferButtons() {
+    hideGuideOfferButtons();
+    const wrapper = document.createElement("div");
+    wrapper.id = "guide-offer-buttons";
+    wrapper.className = "clarification-buttons";
+
+    const yesBtn = document.createElement("button");
+    yesBtn.className = "clarification-btn";
+    yesBtn.textContent = "Yes, help me read it";
+    yesBtn.addEventListener("click", () => {
+      hideGuideOfferButtons();
+      handleInput("yes");
+    });
+    wrapper.appendChild(yesBtn);
+
+    const noBtn = document.createElement("button");
+    noBtn.className = "clarification-btn";
+    noBtn.textContent = "No, I'm ready to analyze";
+    noBtn.addEventListener("click", () => {
+      hideGuideOfferButtons();
+      handleInput("no");
+    });
+    wrapper.appendChild(noBtn);
+
+    chatMessages.appendChild(wrapper);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+  }
+
+  function hideGuideOfferButtons() {
+    const existing = document.getElementById("guide-offer-buttons");
+    if (existing) existing.remove();
+  }
+
   function showBeginAnalysisButton() {
     const wrapper = document.createElement("div");
     wrapper.id = "begin-analysis-wrapper";
@@ -100,7 +133,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   function handleInput(text) {
     if (!text.trim()) return;
-    if (text !== "__continue__" && !text.match(/^\d+$/)) {
+    if (text !== "__continue__" && !text.match(/^\d+$/) && text !== "yes" && text !== "no") {
       addMessage(text, "user");
     }
     const responses = chatbot.processInput(text);
@@ -111,6 +144,8 @@ document.addEventListener("DOMContentLoaded", async () => {
           lastClarAction = r;
         } else if (r.action === "showBeginAnalysis") {
           // skip rendering empty message, button added below
+        } else if (r.action === "showGuideOffer") {
+          addMessage(r.text, r.type, r.className);
         } else {
           addMessage(r.text, r.type, r.className);
         }
@@ -125,6 +160,9 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
         if (i === responses.length - 1 && r.action === "showBeginAnalysis") {
           setTimeout(() => showBeginAnalysisButton(), 100);
+        }
+        if (i === responses.length - 1 && responses.some(resp => resp.action === "showGuideOffer")) {
+          setTimeout(() => showGuideOfferButtons(), 100);
         }
       }, i * 400);
     });

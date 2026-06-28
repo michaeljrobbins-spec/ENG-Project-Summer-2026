@@ -22,9 +22,7 @@ const PROMPTS = {
 
 We'll work through three analytical lenses, one at a time. Each lens asks you to think about the passage from a different angle. After all three, you'll write a short essay with one paragraph per lens.`,
 
-  guideOffer: `Before we start analyzing, would you like a brief guide to help you understand this passage? I can walk you through it section by section with plain-language explanations.
-
-Type **yes** for the reading guide, or **no** to jump straight into the analysis.`,
+  guideOffer: `Before we start analyzing, would you like a brief guide to help you understand this passage? I can walk you through it section by section with plain-language explanations.`,
 
   guideIntro: `Here's a section-by-section breakdown of the soliloquy. Take your time reading through each part.`,
 
