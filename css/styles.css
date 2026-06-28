@@ -228,6 +228,28 @@ header p {
   border-radius: 3px;
 }
 
+.start-over-wrapper {
+  background: transparent;
+  padding: 8px 0;
+}
+
+.start-over-btn {
+  background: var(--primary);
+  border: none;
+  color: white;
+  padding: 12px 24px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-family: inherit;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.start-over-btn:hover {
+  background: var(--primary-light);
+  transform: translateY(-2px);
+}
+
 @media (max-width: 600px) {
   .message { max-width: 95%; }
   .soliloquy-btn { max-width: 100%; }

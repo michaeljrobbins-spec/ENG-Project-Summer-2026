@@ -55,6 +55,9 @@ document.addEventListener("DOMContentLoaded", async () => {
         if (r.action === "reset") {
           setTimeout(startChat, 500);
         }
+        if (chatbot.phase === PHASES.COMPLETE && i === responses.length - 1) {
+          setTimeout(() => addStartOverButton(), 200);
+        }
       }, i * 400);
     });
     if (chatbot.phase !== PHASES.SELECT_SOLILOQUY) {
@@ -83,6 +86,18 @@ document.addEventListener("DOMContentLoaded", async () => {
     userInput.style.height = Math.min(userInput.scrollHeight, 200) + "px";
   }
   userInput.addEventListener("input", autoResize);
+
+  function addStartOverButton() {
+    const wrapper = document.createElement("div");
+    wrapper.classList.add("message", "bot-message", "start-over-wrapper");
+    const btn = document.createElement("button");
+    btn.className = "start-over-btn";
+    btn.textContent = "Start Over with a New Soliloquy";
+    btn.addEventListener("click", startChat);
+    wrapper.appendChild(btn);
+    chatMessages.appendChild(wrapper);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+  }
 
   function startChat() {
     chatMessages.innerHTML = "";
