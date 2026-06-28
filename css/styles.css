@@ -155,10 +155,9 @@ header p {
 
 #soliloquy-buttons {
   display: none;
-  flex-wrap: wrap;
+  grid-template-columns: 1fr 1fr;
   gap: 16px;
   padding: 12px 16px 20px;
-  justify-content: center;
 }
 
 .soliloquy-btn {
@@ -171,8 +170,6 @@ header p {
   cursor: pointer;
   text-align: left;
   transition: all 0.25s ease;
-  flex: 1 1 200px;
-  max-width: 240px;
   display: flex;
   flex-direction: column;
   gap: 6px;
@@ -356,6 +353,6 @@ header p {
 
 @media (max-width: 600px) {
   .message { max-width: 95%; }
-  .soliloquy-btn { max-width: 100%; }
+  #soliloquy-buttons { grid-template-columns: 1fr; }
   header h1 { font-size: 1.1rem; }
 }

@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   function showSoliloquyPicker(soliloquies) {
     soliloquyButtons.innerHTML = "";
-    soliloquyButtons.style.display = "flex";
+    soliloquyButtons.style.display = "grid";
     soliloquies.forEach((s, i) => {
       const btn = document.createElement("button");
       btn.className = `soliloquy-btn soliloquy-btn-${i + 1}`;
