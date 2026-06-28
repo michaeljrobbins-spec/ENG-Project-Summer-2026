@@ -82,6 +82,22 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (existing) existing.remove();
   }
 
+  function showBeginAnalysisButton() {
+    const wrapper = document.createElement("div");
+    wrapper.id = "begin-analysis-wrapper";
+    wrapper.className = "clarification-buttons";
+    const btn = document.createElement("button");
+    btn.className = "clarification-btn continue-btn";
+    btn.textContent = "Click here to begin Analysis";
+    btn.addEventListener("click", () => {
+      wrapper.remove();
+      handleInput("__continue__");
+    });
+    wrapper.appendChild(btn);
+    chatMessages.appendChild(wrapper);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+  }
+
   function handleInput(text) {
     if (!text.trim()) return;
     if (text !== "__continue__" && !text.match(/^\d+$/)) {
@@ -93,6 +109,8 @@ document.addEventListener("DOMContentLoaded", async () => {
       setTimeout(() => {
         if (r.action === "showClarifications") {
           lastClarAction = r;
+        } else if (r.action === "showBeginAnalysis") {
+          // skip rendering empty message, button added below
         } else {
           addMessage(r.text, r.type, r.className);
         }
@@ -104,6 +122,9 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
         if (i === responses.length - 1 && lastClarAction) {
           setTimeout(() => showClarificationButtons(lastClarAction.chunkIndex, lastClarAction.excludeIndex), 100);
+        }
+        if (i === responses.length - 1 && r.action === "showBeginAnalysis") {
+          setTimeout(() => showBeginAnalysisButton(), 100);
         }
       }, i * 400);
     });

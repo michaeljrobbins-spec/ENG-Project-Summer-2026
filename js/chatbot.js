@@ -165,7 +165,7 @@ class Chatbot {
         if (this.selectedSoliloquy.guideSummary) {
           responses.push({ text: this.selectedSoliloquy.guideSummary, type: "bot", className: "transition" });
         }
-        responses.push({ text: PROMPTS.guideReady, type: "bot" });
+        responses.push({ text: "", type: "bot", action: "showBeginAnalysis" });
         return responses;
       }
     }
