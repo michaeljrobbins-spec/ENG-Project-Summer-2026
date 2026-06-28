@@ -167,52 +167,89 @@ class Chatbot {
 
   buildWritingTransition(lens) {
     const responses = this.studentResponses[lens];
-    const summary = this.extractKeyIdea(responses);
+    const themes = this.synthesizeThemes(responses);
 
-    const blueprints = {
-      personal: `Here's your blueprint for the **Personal** paragraph: Open with your main claim about why this passage matters to you personally — you talked about ${summary}. Then bring in a specific quote or paraphrase from the soliloquy that sparked that response, and close by explaining exactly how those words connect to what you just told me. Your own reaction *is* the argument here — the evidence shows the reader why it hit home.`,
-      discursive: `Here's your blueprint for the **Discursive** paragraph: Lead with your central point about Shakespeare's craft — you zeroed in on ${summary}. Pick a quote or paraphrase that showcases that technique in action, introduce it so the reader knows what to look for, and then unpack how it works: what does it do to the meaning, the tone, or the reader's experience? Show the reader how the machinery of the language drives the passage's power.`,
-      global: `Here's your blueprint for the **Global** paragraph: Start with your claim about the passage's wider significance — you connected it to ${summary}. Ground that claim in the text: introduce a quote or paraphrase that carries that universal weight, then explain why those words still land outside of Shakespeare's world. Bridge the soliloquy to the bigger picture you just described — make the reader see that this isn't just a character talking, it's a mirror.`
+    const lensFraming = {
+      personal: {
+        label: "Personal",
+        claimGuide: `why this passage matters to you personally. You explored ideas around ${themes} — distill that into one clear statement of personal significance.`,
+        evidenceGuide: "the specific moment in the text that sparked that personal response",
+        connectionGuide: "how those words connect to the personal experience or feeling you described"
+      },
+      discursive: {
+        label: "Discursive",
+        claimGuide: `what makes this passage significant as a work of literature. You noticed ${themes} — turn that observation into a clear argument about Shakespeare's craft.`,
+        evidenceGuide: "the specific language, device, or structural choice that demonstrates your point",
+        connectionGuide: "how that technique creates meaning — what it does to the reader's understanding or experience"
+      },
+      global: {
+        label: "Global",
+        claimGuide: `why this passage matters beyond the play. You drew connections to ${themes} — sharpen that into a claim about the passage's wider relevance.`,
+        evidenceGuide: "the moment in the text that carries that universal or real-world weight",
+        connectionGuide: "why those words resonate outside Shakespeare's world and speak to the broader issue you identified"
+      }
     };
 
-    return blueprints[lens];
+    const f = lensFraming[lens];
+
+    return `Here's your blueprint for the **${f.label}** paragraph. Three moves, in order:
+
+**1. Open with your claim.** State ${f.claimGuide}
+
+**2. Present your evidence.** Introduce ${f.evidenceGuide}. Set it up for the reader — who's speaking, what's happening — then quote or paraphrase the passage.
+
+**3. Explain the connection.** This is the most important move. Tell the reader ${f.connectionGuide}. Don't let the evidence speak for itself — that's your job.`;
   }
 
-  extractKeyIdea(responses) {
-    const combined = responses.join(" ");
-    const sentences = combined.split(/[.!?]+/).map(s => s.trim()).filter(s => s.length > 20);
+  synthesizeThemes(responses) {
+    const combined = responses.join(" ").toLowerCase();
 
-    if (sentences.length === 0) return "some important ideas";
+    const stopWords = new Set(["the", "a", "an", "is", "are", "was", "were", "it", "this", "that", "and", "or", "but", "in", "on", "at", "to", "for", "of", "with", "as", "by", "from", "i", "my", "me", "you", "he", "she", "they", "we", "his", "her", "its", "our", "their", "be", "been", "being", "have", "has", "had", "do", "does", "did", "will", "would", "could", "should", "can", "may", "might", "not", "so", "if", "when", "how", "what", "which", "who", "whom", "there", "here", "very", "just", "about", "also", "than", "then", "more", "most", "some", "such", "like", "think", "really", "because", "through", "feel", "make", "much", "many", "even", "still", "well", "back", "into", "over", "after", "before", "between", "each", "only", "other", "been", "same", "made", "way", "them", "these", "those", "said", "passage", "soliloquy", "macbeth", "quote", "line", "text", "shakespeare"]);
 
-    const stopWords = new Set(["the", "a", "an", "is", "are", "was", "were", "it", "this", "that", "and", "or", "but", "in", "on", "at", "to", "for", "of", "with", "as", "by", "from", "i", "my", "me", "you", "he", "she", "they", "we", "his", "her", "its", "our", "their", "be", "been", "being", "have", "has", "had", "do", "does", "did", "will", "would", "could", "should", "can", "may", "might", "not", "so", "if", "when", "how", "what", "which", "who", "whom", "there", "here", "very", "just", "about", "also", "than", "then", "more", "most", "some", "such", "like", "think", "really", "because", "through"]);
+    const phrases = this.extractPhrases(combined, stopWords);
+    const words = this.extractTopWords(combined, stopWords);
 
+    const themes = phrases.length > 0 ? phrases : words;
+
+    if (themes.length === 0) return "some important ideas";
+    if (themes.length === 1) return themes[0];
+    if (themes.length === 2) return `${themes[0]} and ${themes[1]}`;
+    return `${themes.slice(0, -1).join(", ")}, and ${themes[themes.length - 1]}`;
+  }
+
+  extractPhrases(text, stopWords) {
+    const bigrams = [];
+    const words = text.split(/\s+/).map(w => w.replace(/[^a-z]/g, "")).filter(Boolean);
+
+    const bigramCounts = {};
+    for (let i = 0; i < words.length - 1; i++) {
+      const a = words[i], b = words[i + 1];
+      if (a.length > 3 && b.length > 3 && !stopWords.has(a) && !stopWords.has(b)) {
+        const pair = `${a} ${b}`;
+        bigramCounts[pair] = (bigramCounts[pair] || 0) + 1;
+      }
+    }
+
+    return Object.entries(bigramCounts)
+      .filter(([, count]) => count >= 2)
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 3)
+      .map(([phrase]) => phrase);
+  }
+
+  extractTopWords(text, stopWords) {
     const wordCounts = {};
-    combined.toLowerCase().split(/\s+/).forEach(w => {
+    text.split(/\s+/).forEach(w => {
       const clean = w.replace(/[^a-z]/g, "");
-      if (clean.length > 3 && !stopWords.has(clean)) {
+      if (clean.length > 4 && !stopWords.has(clean)) {
         wordCounts[clean] = (wordCounts[clean] || 0) + 1;
       }
     });
 
-    const topWords = Object.entries(wordCounts)
+    return Object.entries(wordCounts)
       .sort((a, b) => b[1] - a[1])
-      .slice(0, 4)
+      .slice(0, 3)
       .map(([w]) => w);
-
-    if (topWords.length === 0) return "some important ideas";
-
-    const bestSentence = sentences.reduce((best, s) => {
-      const lower = s.toLowerCase();
-      const score = topWords.filter(w => lower.includes(w)).length;
-      return score > best.score ? { text: s, score } : best;
-    }, { text: sentences[0], score: 0 });
-
-    let idea = bestSentence.text;
-    if (idea.length > 120) idea = idea.substring(0, 117) + "...";
-
-    idea = idea.charAt(0).toLowerCase() + idea.slice(1);
-
-    return idea;
   }
 
   parseParagraphs(text) {
