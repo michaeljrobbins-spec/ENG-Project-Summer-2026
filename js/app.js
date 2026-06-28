@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     soliloquyButtons.style.display = "flex";
     soliloquies.forEach((s, i) => {
       const btn = document.createElement("button");
-      btn.className = "soliloquy-btn";
+      btn.className = `soliloquy-btn soliloquy-btn-${i + 1}`;
       btn.innerHTML = `<span class="btn-number">${i + 1}</span><span class="btn-title">${s.title}</span><span class="btn-label">${s.label}</span>`;
       btn.addEventListener("click", () => {
         soliloquyButtons.style.display = "none";
