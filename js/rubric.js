@@ -5,8 +5,8 @@ function evaluateWriting(paragraphs, soliloquyText) {
 
   const lensKeywords = {
     personal: {
-      strong: ["personally", "my own", "i feel", "i felt", "my experience", "my life", "reminds me", "i relate", "i connect", "i identify", "i recognize", "strikes me", "moves me", "resonates with me", "in my own"],
-      weak: ["i ", "my ", "me "]
+      strong: ["personally", "my own", "i feel", "i felt", "my experience", "my life", "reminds me", "i relate", "i connect", "i identify", "i recognize", "strikes me", "moves me", "resonates with me", "in my own", "resonates", "relatable", "strikes a chord", "hits close", "close to home", "speaks to", "connects to", "meaningful to", "important to", "significant to", "stands out", "deeply", "emotionally", "empathy", "empathize", "sympathy", "sympathize", "visceral", "profound", "moving", "touching", "powerful moment", "haunting", "unsettling", "comforting", "frightening", "inspiring", "familiar", "reminiscent", "brings to mind", "calls to mind", "evokes", "stirs"],
+      weak: ["i ", "my ", "me ", "personal", "feel", "felt", "emotion", "experience"]
     },
     discursive: {
       strong: ["metaphor", "imagery", "literary", "shakespeare", "device", "symbol", "theme", "motif", "soliloquy", "dramatic", "irony", "alliteration", "repetition", "structure", "craft", "diction", "tone", "literature", "tragic", "character development", "literary technique", "poetic"],
