@@ -107,6 +107,7 @@ class Chatbot {
       responses.push({ text: lensData.questions[this.currentQuestionIndex], type: "bot", className: "question" });
     } else {
       responses.push({ text: lensData.wrapUp, type: "bot" });
+      responses.push({ text: this.buildWritingTransition(lens), type: "bot", className: "transition" });
       this.currentLensIndex++;
       this.currentQuestionIndex = 0;
 
@@ -162,6 +163,56 @@ class Chatbot {
       return this.getWelcomeMessages();
     }
     return [{ text: "Would you like to analyze another soliloquy? Type \"yes\" to start over.", type: "bot" }];
+  }
+
+  buildWritingTransition(lens) {
+    const responses = this.studentResponses[lens];
+    const summary = this.extractKeyIdea(responses);
+
+    const blueprints = {
+      personal: `Here's your blueprint for the **Personal** paragraph: Open with your main claim about why this passage matters to you personally — you talked about ${summary}. Then bring in a specific quote or paraphrase from the soliloquy that sparked that response, and close by explaining exactly how those words connect to what you just told me. Your own reaction *is* the argument here — the evidence shows the reader why it hit home.`,
+      discursive: `Here's your blueprint for the **Discursive** paragraph: Lead with your central point about Shakespeare's craft — you zeroed in on ${summary}. Pick a quote or paraphrase that showcases that technique in action, introduce it so the reader knows what to look for, and then unpack how it works: what does it do to the meaning, the tone, or the reader's experience? Show the reader how the machinery of the language drives the passage's power.`,
+      global: `Here's your blueprint for the **Global** paragraph: Start with your claim about the passage's wider significance — you connected it to ${summary}. Ground that claim in the text: introduce a quote or paraphrase that carries that universal weight, then explain why those words still land outside of Shakespeare's world. Bridge the soliloquy to the bigger picture you just described — make the reader see that this isn't just a character talking, it's a mirror.`
+    };
+
+    return blueprints[lens];
+  }
+
+  extractKeyIdea(responses) {
+    const combined = responses.join(" ");
+    const sentences = combined.split(/[.!?]+/).map(s => s.trim()).filter(s => s.length > 20);
+
+    if (sentences.length === 0) return "some important ideas";
+
+    const stopWords = new Set(["the", "a", "an", "is", "are", "was", "were", "it", "this", "that", "and", "or", "but", "in", "on", "at", "to", "for", "of", "with", "as", "by", "from", "i", "my", "me", "you", "he", "she", "they", "we", "his", "her", "its", "our", "their", "be", "been", "being", "have", "has", "had", "do", "does", "did", "will", "would", "could", "should", "can", "may", "might", "not", "so", "if", "when", "how", "what", "which", "who", "whom", "there", "here", "very", "just", "about", "also", "than", "then", "more", "most", "some", "such", "like", "think", "really", "because", "through"]);
+
+    const wordCounts = {};
+    combined.toLowerCase().split(/\s+/).forEach(w => {
+      const clean = w.replace(/[^a-z]/g, "");
+      if (clean.length > 3 && !stopWords.has(clean)) {
+        wordCounts[clean] = (wordCounts[clean] || 0) + 1;
+      }
+    });
+
+    const topWords = Object.entries(wordCounts)
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 4)
+      .map(([w]) => w);
+
+    if (topWords.length === 0) return "some important ideas";
+
+    const bestSentence = sentences.reduce((best, s) => {
+      const lower = s.toLowerCase();
+      const score = topWords.filter(w => lower.includes(w)).length;
+      return score > best.score ? { text: s, score } : best;
+    }, { text: sentences[0], score: 0 });
+
+    let idea = bestSentence.text;
+    if (idea.length > 120) idea = idea.substring(0, 117) + "...";
+
+    idea = idea.charAt(0).toLowerCase() + idea.slice(1);
+
+    return idea;
   }
 
   parseParagraphs(text) {
