@@ -1,11 +1,16 @@
 const PROMPTS = {
-  welcome: `Welcome to this Macbeth Soliloquy Analysis Workshop! I'm here to help you explore one of Macbeth's soliloquies. We will look at it through the following lenses:
+  welcome: `Welcome to this Macbeth Soliloquy Analysis Workshop! I'm here to help you explore one of Macbeth's soliloquies. We will look at it through three analytical lenses, then use what you discover to write a short essay.
+
+**The Three Lenses:**
+
 1. Your own personal interpretation of the importance of the text
 
 2. Your thoughts on the literary importance of the text
 
 3. Your thoughts on the global importance of the text
-Your goal is to walk through the different lenses and then develop a three paragraph analysis of the work. By doing this, you'll accomplish the following goals:
+
+**Your Goals:**
+
 1. Interpret the meaning and significance of a Shakespearean soliloquy by examining it through multiple analytical lenses
 
 2. Synthesize evidence to support an analysis of a literary text
